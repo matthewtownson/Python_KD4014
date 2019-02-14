@@ -1,5 +1,7 @@
 ---
 title: "Running Python"
+teaching: 15
+exercises: 10
 questions:
 - "How can I run Python programs?"
 objectives:
