@@ -1,5 +1,5 @@
 ---
-title: "Built-in Functions and Help"
+title: "Built-in Functions, Help and Errors"
 teaching: 15
 exercises: 10
 questions:
