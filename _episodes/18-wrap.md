@@ -8,15 +8,10 @@ questions:
 objectives:
 - "Name and locate scientific Python community sites for software, workshops, and help."
 keypoints:
-- "Python supports a large community within and outwith research."
+- "Python supports a large community within research."
 ---
 
-Leslie Lamport once said, "Writing is nature's way of showing you how sloppy your thinking is."
-The same is true of programming:
-many things that seem obvious when we're thinking about them
-turn out to be anything but when we have to explain them precisely.
-
-## Python supports a large community within and outwith research.
+## Python supports a large community within research.
 
 *   The [Python 3 documentation](https://docs.python.org/3/) covers the core language
     and the standard library.
@@ -36,3 +31,10 @@ turn out to be anything but when we have to explain them precisely.
     [SciPy](http://stackoverflow.com/questions/tagged/scipy),
     [Pandas](http://stackoverflow.com/questions/tagged/pandas),
     and other topics.
+
+## My Top Tips
+
+* Comment your code: your future self will thank you.
+* Use version control: your future self will thank you!
+* Aim for reproducibility: consider using Jupyter Notebooks as SI to papers.
+* Keep going: programming isn't easy, but it can be very rewarding.
