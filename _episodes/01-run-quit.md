@@ -1,5 +1,5 @@
 ---
-title: "Running and Quitting"
+title: "Running Python"
 teaching: 15
 exercises: 10
 questions:
@@ -11,22 +11,18 @@ objectives:
 keypoints:
 - "Python programs are plain text files."
 - "Use the Jupyter Notebook for editing and running Python."
-- "The Notebook has Command and Edit modes."
 - "Use the keyboard and mouse to select and edit cells."
 - "The Notebook will turn Markdown into pretty-printed documentation."
-- "Markdown does most of what HTML does."
 ---
 ## Python programs are plain text files.
 
 *   They have the `.py` extension to let everyone (including the operating system) 
-    know it is a Python program.
-    *   This is convention, not a requirement.
+    know it is a Python program. This is convention, not a requirement.
 *   It's common to write them using a text editor but we are going to use
     the [Jupyter Notebook][jupyter].
 *   The bit of extra setup is well worth it because the Notebook provides code completion 
     and other helpful features.
 *   Notebook files have the extension `.ipynb` to distinguish them from plain-text Python programs.
-    *   Can export as "pure Python" to run from the command line.
 
 ## Use the Jupyter Notebook for editing and running Python.
 

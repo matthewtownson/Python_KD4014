@@ -10,7 +10,7 @@
 carpentry: "swc"
 
 # Overall title for pages.
-title: "Programming in Python"
+title: "CDT-PV: Programming in Python"
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
@@ -25,7 +25,7 @@ kind: "lesson"
 repository: <USERNAME>/<PROJECT>
 
 # Email address, no mailto:
-email: "team@carpentries.org"
+email: "lucywhalley@gmail.com"
 
 # Sites.
 amy_site: "https://amy.software-carpentry.org/workshops"
@@ -50,7 +50,7 @@ post_survey: "https://www.surveymonkey.com/r/swc_post_workshop_v1?workshop_id="
 training_post_survey: "https://www.surveymonkey.com/r/post-instructor-training"
 
 # Start time in minutes (0 to be clock-independent, 540 to show a start at 09:00 am).
-start_time: 600
+start_time: 0
 
 # Specify that things in the episodes collection should be output.
 collections:
