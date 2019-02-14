@@ -1,54 +1,45 @@
 ---
-title: "Programming Style"
+title: "Programming Good Practice"
 teaching: 15
 exercises: 15
 questions:
 - "How can I make my programs more readable?"
-- "How do most programmers format their code?"
 - "How can programs check their own operation?"
+- "How can I document my code?"
+
 objectives:
-- "Provide sound justifications for basic rules of coding style."
-- "Refactor one-page programs to make them more readable and justify the changes."
 - "Use Python community coding standards (PEP-8)."
+- "Use assertions to check for internal errors"
+- "Use docstrings to provide online help"
+
 keypoints:
 - "Follow standard Python style in your code."
+- "Use assertions to check for internal errors"
 - "Use docstrings to provide online help."
 ---
 
-## Coding style
+## Follow standard Python style in your code.
 
 Coding style helps us to understand the code better. It helps to maintain and change the code.
 Python relies strongly on coding style, as we may notice by the indentation we apply to lines to define different blocks of code.
-Python proposes a standard style through one of its first Python Enhancement Proposals (PEP), [PEP8](https://www.python.org/dev/peps/pep-0008), and highlight the importance of readability in the [Zen of Python](https://www.python.org/dev/peps/pep-0020).
+Python proposes a standard style through one of its first Python Enhancement Proposals (PEP), [PEP8](https://www.python.org/dev/peps/pep-0008), and highlights the importance of readability in the [Zen of Python](https://www.python.org/dev/peps/pep-0020).
 
 We may highlight some points:
 *   document your code
 *   use clear, meaningful variable names
 *   use white-space, *not* tabs, to indent lines
 
-
-## Follow standard Python style in your code.
-
-*   [PEP8](https://www.python.org/dev/peps/pep-0008):
-    a style guide for Python that discusses topics such as how you should name variables,
-    how you should use indentation in your code,
-    how you should structure your `import` statements,
-    etc.
-    Adhering to PEP8 makes it easier for other Python developers to read and understand your code,
-    and to understand what their contributions should look like.
-    The [PEP8 application and Python library](https://pypi.python.org/pypi/pep8)
-    can check your code for compliance with PEP8.
-*   [Google style guide on Python](https://google.github.io/styleguide/pyguide.html) 
-    supports the use of PEP8 and extend the coding style to more specific structure of 
-    a Python code, which may be interesting also to follow.
+Adhering to PEP8 makes it easier for other Python developers to read and understand your code,
+and to understand what their contributions should look like.
+The [PEP8 application and Python library](https://pypi.python.org/pypi/pep8)
+can check your code for compliance with PEP8.
 
 ## Use assertions to check for internal errors.
 
 Assertions are a simple, but powerful method for making sure that the context in which your code is executing is as you expect.
 
 ~~~
-def calc_bulk_density(mass, volume):
-    '''Return dry bulk density = powder mass / powder volume.'''
+def calc_bulk_density(mass, volume):  
     assert volume > 0
     return mass / volume
 ~~~
@@ -64,21 +55,17 @@ If the assertion is `False`, the Python interpreter raises an `AssertionError` r
 *   Called a *docstring* (short for "documentation string").
 
 ~~~
-def average(values):
-    "Return average of values, or None if no values are supplied."
-
-    if len(values) == 0:
-        return None
-    return sum(values) / average(values)
-
-help(average)
+def calc_bulk_density(mass, volume): 
+    "Return dry bulk density = powder mass / powder volume."
+    assert volume > 0
+    return mass / volume
 ~~~
 {: .python}
 ~~~
-Help on function average in module __main__:
+Help on function calc_bulk_density in module __main__:
 
-average(values)
-    Return average of values, or None if no values are supplied.
+calc_bulk_density(mass, volume)
+    Return dry bulk density = powder mass / powder volume.
 ~~~
 {: .output}
 
