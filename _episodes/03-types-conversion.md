@@ -14,7 +14,9 @@ keypoints:
 - "Use the built-in function `type` to find the type of a value."
 - "Types control what operations can be done on values."
 - "Strings can be added and multiplied."
-- "Strings have a length (but numbers don't)."
+- "Use an index to get a single character from a string."
+- "Use a slice to get a substring."
+- "Use the built-in function `len` to find the length of a string."
 - "Must convert numbers to strings or vice versa when operating on them."
 - "Can mix integers and floats freely in operations."
 - "Variables only change value when something is assigned to them."
@@ -107,6 +109,68 @@ print(separator)
 ~~~
 {: .output}
 
+## Use an index to get a single character from a string.
+
+*   The characters (individual letters, numbers, and so on) in a string are
+    ordered. For example, the string 'AB' is not the same as 'BA'. Because of
+    this ordering, we can treat the string as a list of characters.
+*   Each position in the string (first, second, etc.) is given a number. This
+    number is called an index or sometimes a subscript.
+*   Indices are numbered from 0.
+*   Use the position's index in square brackets to get the character at that
+    position.
+
+~~~
+atom_name = 'helium'
+print(atom_name[0])
+~~~
+{: .python}
+~~~
+h
+~~~
+{: .output}
+
+## Use a slice to get a substring.
+
+*   A part of a string is called a substring. A substring can be as short as a
+    single character.
+*   An item in a list is called an element. Whenever we treat a string as if it
+    were a list, the string's elements are its individual characters.
+*   A slice is a part of a string (or, more generally, any list-like thing).
+*   We take a slice by using `[start:stop]`, where `start` is replaced with the
+    index of the first element we want and `stop` is replaced with the index of
+    the element just after the last element we want.
+*   Mathematically, you might say that a slice selects `[start:stop)`.
+*   The difference between stop and start is the slice's length.
+*   Taking a slice does not change the contents of the original string. Instead,
+    the slice is a copy of part of the original string.
+
+~~~
+atom_name = 'sodium'
+print(atom_name[0:3])
+~~~
+{: .python}
+~~~
+sod
+~~~
+{: .output}
+
+## Use the built-in function `len` to find the length of a string.
+
+~~~
+print(len('helium'))
+~~~
+{: .python}
+~~~
+6
+~~~
+{: .output}
+
+*   Nested functions are evaluated from the inside out,
+    just like in mathematics.
+
+
+
 ## Strings have a length (but numbers don't).
 
 *   The built-in function `len` counts the number of characters in a string.
@@ -184,6 +248,8 @@ three squared is 9.0
 ~~~
 {: .output}
 
+
+
 ## Variables only change value when something is assigned to them.
 
 *   If we make one cell in a spreadsheet depend on another,
@@ -206,6 +272,54 @@ first is 2 and second is 5
 *   The computer reads the value of `first` when doing the multiplication,
     creates a new value, and assigns it to `second`.
 *   After that, `second` does not remember where it came from.
+
+
+> ## Challenge
+>
+> If you assign `a = 123`,
+> what happens if you try to get the second digit of `a` via `a[1]`?
+>
+> > ## Solution
+> > Numbers are not stored in the written representation,
+> > so they can't be treated like strings.
+> >
+> > ~~~
+> > a = 123
+> > print(a[1])
+> > ~~~
+> > {: .python}
+> > ~~~
+> > TypeError: 'int' object is not subscriptable
+> > ~~~
+> > {: .error}
+> {: .solution}
+{: .challenge}
+
+> ## Slicing
+>
+> What does the following program print?
+>
+> ~~~
+> atom_name = 'carbon'
+> print('atom_name[1:3] is:', atom_name[1:3])
+> ~~~
+> {: .python}
+> > ## Solution
+> > 
+> > ~~~
+> > atom_name[1:3] is: ar
+> > ~~~
+> > {: .output}
+> {: .solution}
+>
+> 1.  What does `thing[low:high]` do?
+> 2.  What does `thing[low:]` (without a value after the colon) do?
+> 3.  What does `thing[:high]` (without a value before the colon) do?
+> 4.  What does `thing[:]` (just a colon) do?
+> 5.  What does `thing[number:negative-number]` do?
+> 6.  What happens when you choose a `high` value which is out of range? (i.e., try `atom_name[0:15]`) 
+{: .challenge}
+
 
 > ## Fractions
 >
