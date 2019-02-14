@@ -5,7 +5,7 @@ exercises: 15
 questions:
 - "How can I import and analyse tabular data files in Python?"
 objectives:
-- "Read tabular data from a file into a program."
+- "Read tabular data from a file into a program using `numpy`."
 - "Select individual values and subsections from data."
 - "Perform operations on arrays of data."
 keypoints:
