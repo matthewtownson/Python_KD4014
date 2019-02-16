@@ -19,7 +19,7 @@ keypoints:
 ~~~
 import pandas
 ~~~
-(: .language-python)
+{: .language-python}
 
 Importing a library is like getting a piece of lab equipment out of a storage locker and setting it
 up on the bench. Libraries provide additional functionality to the basic Python package, much like
@@ -32,8 +32,6 @@ file for us:
 pandas.read_csv("./data/UVVis-01.csv")
 ~~~
 {: .language-python}
-
-~~~
 
 The expression `pandas.read_csv(...)` is a [function call]({{ page.root }}/reference/#function-call)
 that asks Python to run the [function]({{ page.root }}/reference/#function) `read_csv` which
