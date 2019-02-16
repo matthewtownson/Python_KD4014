@@ -1,7 +1,7 @@
 python-novice-mix
 =================
 
-<https://imperialcollegelondon.github.io/python-novice-mix/>
+<https://lucydot.github.io/python_novice/>
 
 This is an introduction to Python for non-programmers based on content from
 the two software carpentry courses:
