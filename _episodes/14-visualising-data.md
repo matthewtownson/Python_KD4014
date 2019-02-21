@@ -15,7 +15,12 @@ keypoints:
 The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers," and
 the best way to develop insight is often to visualize data.  Visualization deserves an entire
 lecture of its own, but we can explore a few features of Python's `matplotlib` library here.  While
-there is no official plotting library, `matplotlib` is the _de facto_ standard.  
+there is no official plotting library, `matplotlib` is the _de facto_ standard.  Let's import it - 
+
+~~~
+import matplotlib.pyplot
+~~~
+{: .language-python}
 
 > ## Some IPython Magic
 >
@@ -71,7 +76,7 @@ We can now ask `matplotlib.pyplot` to plot a line graph of absorption vs wavelen
 ~~~
 ave_plot = matplotlib.pyplot.plot(wavelengths,ave_absorption)
 matplotlib.pyplot.xlabel("wavelength")
-matplotlib.pyplot.ylabel("absorption")
+matplotlib.pyplot.ylabel("ave. absorption")
 matplotlib.pyplot.show()
 ~~~
 
@@ -91,7 +96,7 @@ We can now plot this sub-set of the absorption data.
 ~~~
 max_plot = matplotlib.pyplot.plot(wavelength_slice,numpy.mean(data_slice, axis=0))
 matplotlib.pyplot.xlabel("wavelength")
-matplotlib.pyplot.ylabel("absorption")
+matplotlib.pyplot.ylabel("ave. absorption")
 matplotlib.pyplot.show()
 ~~~
 {: .language-python}
@@ -103,7 +108,7 @@ Let's have a look at two other statistics:
 ~~~
 max_plot = matplotlib.pyplot.plot(wavelength_slice,numpy.max(data_slice, axis=0))
 matplotlib.pyplot.xlabel("wavelength")
-matplotlib.pyplot.ylabel("absorption")
+matplotlib.pyplot.ylabel("max absorption")
 matplotlib.pyplot.show()
 ~~~
 {: .language-python}
@@ -113,7 +118,7 @@ matplotlib.pyplot.show()
 ~~~
 min_plot = matplotlib.pyplot.plot(wavelength_slice,numpy.min(data_slice, axis=0))
 matplotlib.pyplot.xlabel("wavelength")
-matplotlib.pyplot.ylabel("absorption")
+matplotlib.pyplot.ylabel("min absorption")
 matplotlib.pyplot.show()
 ~~~
 {: .language-python}
@@ -135,9 +140,10 @@ Here are our three plots side by side:
 
 ~~~
 import numpy
+import pandas
 import matplotlib.pyplot
 
-data = numpy.loadtxt(fname='UVVis-01-cleaned.csv', delimiter=',')
+data = numpy.loadtxt(fname='./data/UVVis-01-cleaned.csv', delimiter=',')
 wavelengths = pandas.read_csv("./data/UVVis-01.csv",usecols=[0],header=None).to_numpy()
 
 data_slice = data[:,650:800]
@@ -150,12 +156,15 @@ axes2 = fig.add_subplot(1, 3, 2)
 axes3 = fig.add_subplot(1, 3, 3)
 
 axes1.set_ylabel('average')
+axes1.set_xlabel('wavelength')
 axes1.plot(wavelength_slice,numpy.mean(data_slice, axis=0))
 
 axes2.set_ylabel('max')
+axes2.set_xlabel('wavelength')
 axes2.plot(wavelength_slice,numpy.max(data_slice, axis=0))
 
 axes3.set_ylabel('min')
+axes3.set_xlabel('wavelength')
 axes3.plot(wavelength_slice,numpy.min(data_slice, axis=0))
 
 fig.tight_layout()
