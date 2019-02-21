@@ -73,8 +73,8 @@ If you run into any difficulties, please request help before the workshop begins
 
 ## Getting the Data
 
-To obtain the data we will be using, download and unzip the file 
-[python-novice-inflammation-data.zip]({{page.root}}/data/python-novice-inflammation-data.zip).
+To obtain the data we will be using, download the file 
+[UVVis-01.csv]({{page.root}}/data/UVVis-01.csv).
 In order to follow the presented material, you should launch a Jupyter 
 notebook in the root directory (see [Starting Python](#Starting-Python)).
 
