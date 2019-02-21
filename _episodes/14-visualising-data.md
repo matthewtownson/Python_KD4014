@@ -15,21 +15,7 @@ keypoints:
 The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers," and
 the best way to develop insight is often to visualize data.  Visualization deserves an entire
 lecture of its own, but we can explore a few features of Python's `matplotlib` library here.  While
-there is no official plotting library, `matplotlib` is the _de facto_ standard.  First, we will
-import the `pyplot` module from `matplotlib` and use two of its functions to create and display a
-heat map of our data:
-
-~~~
-import matplotlib.pyplot
-image = matplotlib.pyplot.imshow(data)
-matplotlib.pyplot.show()
-~~~
-{: .language-python}
-
-![Heatmap of the Data](../fig/01-numpy_71_0.png)
-
-Blue pixels in this heat map represent low values, while yellow pixels represent high values.  As we
-can see, inflammation rises and falls over a 40-day period.
+there is no official plotting library, `matplotlib` is the _de facto_ standard.  
 
 > ## Some IPython Magic
 >
@@ -48,42 +34,91 @@ can see, inflammation rises and falls over a 40-day period.
 > Note that you only have to execute this function once per notebook.
 {: .callout}
 
-Let's take a look at the average inflammation over time:
+Let's take a look at the average absorption data across all wavelengths:
 
 ~~~
-ave_inflammation = numpy.mean(data, axis=0)
-ave_plot = matplotlib.pyplot.plot(ave_inflammation)
+ave_absorption = numpy.mean(data, axis=0)
+ave_plot = matplotlib.pyplot.plot(ave_absorption)
 matplotlib.pyplot.show()
 ~~~
 {: .language-python}
 
-![Average Inflammation Over Time](../fig/01-numpy_73_0.png)
+![Average Absorption over Wavelength](../fig/01-numpy_01.png)
 
-Here, we have put the average per day across all patients in the variable `ave_inflammation`, then
-asked `matplotlib.pyplot` to create and display a line graph of those values.  The result is a
-roughly linear rise and fall, which is suspicious: we might instead expect a sharper rise and slower
-fall.  Let's have a look at two other statistics:
+Here, we have put the average per wavelength across all samples in the variable `ave_absorption`, then
+asked `matplotlib.pyplot` to create and display a line graph of those values.
+
+At the moment the x-axis has no physical significance; it is an integer range from 0 to 1200. 
+It would be better if the x-axis corresponded to the wavelength.
+Let's read in the wavelength from the original (un-cleaned) data file
 
 ~~~
-max_plot = matplotlib.pyplot.plot(numpy.max(data, axis=0))
+wavelengths_df = pandas.read_csv("./data/UVVis-01.csv",usecols=[0],header=None)
+~~~
+{: .language-python}
+
+We read in the first column of the data file as this contains the wavelength data. 
+This has created a `DataFrame` object with a single column.
+We can convert this to a `NumPy` array using the DataFrame `to_numpy` method
+
+~~~
+wavelengths = wavelengths_df.to_numpy()
+~~~
+{: .language-python}
+
+We can now ask `matplotlib.pyplot` to plot a line graph of absorption vs wavelength with labelled axes.
+
+~~~
+ave_plot = matplotlib.pyplot.plot(wavelengths,ave_absorption)
+matplotlib.pyplot.xlabel("wavelength")
+matplotlib.pyplot.ylabel("absorption")
+matplotlib.pyplot.show()
+~~~
+
+![Average Absorption with Labelled Axes](../fig/01-numpy_01b.png)
+
+We are interested in analysing a sub-set of the data, from index 650 to index 800. 
+So let's take a slice of the wavelength and data arrays.
+
+~~~
+data_slice = data[:,650:800]
+wavelength_slice = wavelengths[650:800]
+~~~
+{: .language-python} 
+
+We can now plot this sub-set of the absorption data.
+
+~~~
+max_plot = matplotlib.pyplot.plot(wavelength_slice,numpy.mean(data_slice, axis=0))
+matplotlib.pyplot.xlabel("wavelength")
+matplotlib.pyplot.ylabel("absorption")
 matplotlib.pyplot.show()
 ~~~
 {: .language-python}
 
-![Maximum Value Along The First Axis](../fig/01-numpy_75_1.png)
+![Average Value Along Slice of the First Axis](../fig/01-numpy_01c.png)
+
+Let's have a look at two other statistics:
 
 ~~~
-min_plot = matplotlib.pyplot.plot(numpy.min(data, axis=0))
+max_plot = matplotlib.pyplot.plot(wavelength_slice,numpy.max(data_slice, axis=0))
+matplotlib.pyplot.xlabel("wavelength")
+matplotlib.pyplot.ylabel("absorption")
 matplotlib.pyplot.show()
 ~~~
 {: .language-python}
 
-![Minimum Value Along The First Axis](../fig/01-numpy_75_3.png)
+![Maximum Value Along Slice of The First Axis](../fig/01-numpy_02.png)
 
-The maximum value rises and falls smoothly, while the minimum seems to be a step function.  Neither
-trend seems particularly likely, so either there's a mistake in our calculations or something is
-wrong with our data.  This insight would have been difficult to reach by examining the numbers
-themselves without visualization tools.
+~~~
+min_plot = matplotlib.pyplot.plot(wavelength_slice,numpy.min(data_slice, axis=0))
+matplotlib.pyplot.xlabel("wavelength")
+matplotlib.pyplot.ylabel("absorption")
+matplotlib.pyplot.show()
+~~~
+{: .language-python}
+
+![Minimum Value Along Slice of The First Axis](../fig/01-numpy_03.png)
 
 ### Grouping plots
 You can group similar plots in a single figure using subplots.
@@ -102,7 +137,11 @@ Here are our three plots side by side:
 import numpy
 import matplotlib.pyplot
 
-data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+data = numpy.loadtxt(fname='UVVis-01-cleaned.csv', delimiter=',')
+wavelengths = pandas.read_csv("./data/UVVis-01.csv",usecols=[0],header=None).to_numpy()
+
+data_slice = data[:,650:800]
+wavelength_slice = wavelengths[650:800]
 
 fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
 
@@ -111,30 +150,33 @@ axes2 = fig.add_subplot(1, 3, 2)
 axes3 = fig.add_subplot(1, 3, 3)
 
 axes1.set_ylabel('average')
-axes1.plot(numpy.mean(data, axis=0))
+axes1.plot(wavelength_slice,numpy.mean(data_slice, axis=0))
 
 axes2.set_ylabel('max')
-axes2.plot(numpy.max(data, axis=0))
+axes2.plot(wavelength_slice,numpy.max(data_slice, axis=0))
 
 axes3.set_ylabel('min')
-axes3.plot(numpy.min(data, axis=0))
+axes3.plot(wavelength_slice,numpy.min(data_slice, axis=0))
 
 fig.tight_layout()
+
+matplotlib.pyplot.savefig('./group_plot.png')
 
 matplotlib.pyplot.show()
 ~~~
 {: .language-python}
 
-![The Previous Plots as Subplots](../fig/01-numpy_80_0.png)
+![The Previous Plots as Subplots](../fig/01-numpy_04.png)
 
 The [call]({{ page.root }}/reference/#function-call) to `loadtxt` reads our data,
 and the rest of the program tells the plotting library
 how large we want the figure to be,
 that we're creating three subplots,
 what to draw for each one,
-and that we want a tight layout.
+and that we want a tight layout
 (If we leave out that call to `fig.tight_layout()`,
-the graphs will actually be squeezed together more closely.)
+the graphs will actually be squeezed together more closely).
+The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figure to the file `group_plot.png`.
 
 > ## Scientists Dislike Typing
 >
@@ -190,51 +232,11 @@ the graphs will actually be squeezed together more closely.)
 > {: .solution}
 {: .challenge}
 
-> ## Drawing Straight Lines
->
-> In the center and right subplots above, we expect all lines to look like step functions because
-> non-integer value are not realistic for the minimum and maximum values. However, you can see
-> that the lines are not always vertical or horizontal, and in particular the step function
-> in the subplot on the right looks slanted. Why is this?
->
-> > ## Solution
-> > Because matplotlib interpolates (draws a straight line) between the points.
-> > One way to do avoid this is to use the Matplotlib `drawstyle` option:
-> >
-> > ~~~
-> > import numpy
-> > import matplotlib.pyplot
-> >
-> > data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
-> >
-> > fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
-> >
-> > axes1 = fig.add_subplot(1, 3, 1)
-> > axes2 = fig.add_subplot(1, 3, 2)
-> > axes3 = fig.add_subplot(1, 3, 3)
-> >
-> > axes1.set_ylabel('average')
-> > axes1.plot(numpy.mean(data, axis=0), drawstyle='steps-mid')
-> >
-> > axes2.set_ylabel('max')
-> > axes2.plot(numpy.max(data, axis=0), drawstyle='steps-mid')
-> >
-> > axes3.set_ylabel('min')
-> > axes3.plot(numpy.min(data, axis=0), drawstyle='steps-mid')
-> >
-> > fig.tight_layout()
-> >
-> > matplotlib.pyplot.show()
-> > ~~~
-> > {: .language-python}
-> ![Plot with step lines](../fig/01-numpy_exercise_0.png)
-> {: .solution}
-{: .challenge}
 
 > ## Make Your Own Plot
 >
 > Create a plot showing the standard deviation (`numpy.std`)
-> of the inflammation data for each day across all patients.
+> of the absorption data for each day across all patients.
 >
 > > ## Solution
 > > ~~~
@@ -255,7 +257,7 @@ the graphs will actually be squeezed together more closely.)
 > > import numpy
 > > import matplotlib.pyplot
 > >
-> > data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+> > data = numpy.loadtxt(fname='UVVis-01-cleaned.csv', delimiter=',')
 > >
 > > # change figsize (swap width and height)
 > > fig = matplotlib.pyplot.figure(figsize=(3.0, 10.0))

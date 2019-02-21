@@ -32,9 +32,12 @@ keypoints:
     [Pandas](http://stackoverflow.com/questions/tagged/pandas),
     and other topics.
 
-## My Top Tips
+## Top Tips
 
 * Comment your code: your future self will thank you.
+
 * Use version control: your future self will thank you!
+
 * Aim for reproducibility: consider using Jupyter Notebooks as SI to papers.
+
 * Keep going: programming isn't easy, but it can be very rewarding.

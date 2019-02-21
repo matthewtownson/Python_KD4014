@@ -25,73 +25,50 @@ In order to load our inflammation data, we need to access
 library if you want to do fancy things with numbers, especially if you have matrices or arrays.  We
 can import NumPy using:
 
-~~~
-import numpy
-~~~
-{: .language-python}
-
-Importing a library is like getting a piece of lab equipment out of a storage locker and setting it
-up on the bench. Libraries provide additional functionality to the basic Python package, much like
-a new piece of equipment adds functionality to a lab space. Just like in the lab, importing too
-many libraries can sometimes complicate and slow down your programs - so we only import what we
-need for each program. Once we've imported the library, we can ask the library to read our data
+First lets import the numpy library, and ask the library to read our cleaned data
 file for us:
 
 ~~~
-numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+import numpy
+numpy.loadtxt(fname='UVVis-01-cleaned.csv', delimiter=',')
 ~~~
 {: .language-python}
 
 ~~~
-array([[ 0.,  0.,  1., ...,  3.,  0.,  0.],
-       [ 0.,  1.,  2., ...,  1.,  0.,  1.],
-       [ 0.,  1.,  1., ...,  2.,  1.,  1.],
+array([[ 4.47125000e-04,  6.55591000e-04,  8.64056000e-04, ...,
+         1.00000000e+01,  1.29667747e+00,  1.66669679e+00],
+       [-3.66223800e-03, -3.49741500e-03, -3.34321500e-03, ...,
+        -1.22419536e-01, -7.07442700e-03, -1.82473719e-01],
+       [ 2.23267300e-03,  2.29731000e-03,  2.47505900e-03, ...,
+         3.31975669e-01,  3.77199233e-01,  3.53418890e-02],
        ...,
-       [ 0.,  1.,  1., ...,  1.,  1.,  1.],
-       [ 0.,  0.,  0., ...,  0.,  2.,  0.],
-       [ 0.,  0.,  1., ...,  1.,  1.,  0.]])
+       [ 1.20771340e-02,  1.22769590e-02,  1.24000520e-02, ...,
+         3.11538220e-02,  1.53292596e-01, -2.67419547e-01],
+       [ 3.98183100e-03,  4.22229500e-03,  4.32843200e-03, ...,
+        -1.33138746e-01, -6.67433520e-02,  1.55003861e-01],
+       [ 4.21040200e-03,  4.36906300e-03,  4.38802100e-03, ...,
+         8.95578190e-02,  8.41182170e-02,  1.43565789e-01]])
 ~~~
 {: .output}
 
 The expression `numpy.loadtxt(...)` is a [function call]({{ page.root }}/reference/#function-call)
 that asks Python to run the [function]({{ page.root }}/reference/#function) `loadtxt` which
-belongs to the `numpy` library. This [dotted notation]({{ page.root }}/reference/#dotted-notation)
-is used everywhere in Python: the thing that appears before the dot contains the thing that
-appears after.
-
-As an example, John Smith is the John that belongs to the Smith family.
-We could use the dot notation to write his name `smith.john`,
-just as `loadtxt` is a function that belongs to the `numpy` library.
+belongs to the `numpy` library. 
 
 `numpy.loadtxt` has two [parameters]({{ page.root }}/reference/#parameter): the name of the file
 we want to read and the [delimiter]({{ page.root }}/reference/#delimiter) that separates values on
 a line. These both need to be character strings (or [strings]({{ page.root }}/reference/#string)
 for short), so we put them in quotes.
 
-Since we haven't told it to do anything else with the function's output,
-the notebook displays it.
-In this case,
-that output is the data we just loaded.
-By default,
-only a few rows and columns are shown
-(with `...` to omit elements when displaying big arrays).
-To save space,
-Python displays numbers as `1.` instead of `1.0`
-when there's nothing interesting after the decimal point.
-
-Our call to `numpy.loadtxt` read our file
-but didn't save the data in memory.
-To do that,
-we need to assign the array to a variable. Just as we can assign a single value to a variable, we
-can also assign an array of values to a variable using the same syntax.  Let's re-run
+Let's re-run
 `numpy.loadtxt` and save the returned data:
 
 ~~~
-data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+data = numpy.loadtxt(fname='UVVis-01-cleaned.csv', delimiter=',')
 ~~~
 {: .language-python}
 
-This statement doesn't produce any output because we've assigned the output to the variable `data`.
+Remember, this statement doesn't produce any output because we've assigned the output to the variable `data` (see the [pandas lesson]() for more details.
 If we want to check that the data have been loaded,
 we can print the variable's value:
 
@@ -101,18 +78,22 @@ print(data)
 {: .language-python}
 
 ~~~
-[[ 0.  0.  1. ...,  3.  0.  0.]
- [ 0.  1.  2. ...,  1.  0.  1.]
- [ 0.  1.  1. ...,  2.  1.  1.]
- ...,
- [ 0.  1.  1. ...,  1.  1.  1.]
- [ 0.  0.  0. ...,  0.  2.  0.]
- [ 0.  0.  1. ...,  1.  1.  0.]]
+[[ 4.47125000e-04  6.55591000e-04  8.64056000e-04 ...  1.00000000e+01
+   1.29667747e+00  1.66669679e+00]
+ [-3.66223800e-03 -3.49741500e-03 -3.34321500e-03 ... -1.22419536e-01
+  -7.07442700e-03 -1.82473719e-01]
+ [ 2.23267300e-03  2.29731000e-03  2.47505900e-03 ...  3.31975669e-01
+   3.77199233e-01  3.53418890e-02]
+ ...
+ [ 1.20771340e-02  1.22769590e-02  1.24000520e-02 ...  3.11538220e-02
+   1.53292596e-01 -2.67419547e-01]
+ [ 3.98183100e-03  4.22229500e-03  4.32843200e-03 ... -1.33138746e-01
+  -6.67433520e-02  1.55003861e-01]
+ [ 4.21040200e-03  4.36906300e-03  4.38802100e-03 ...  8.95578190e-02
+   8.41182170e-02  1.43565789e-01]]
 ~~~
 {: .output}
 
-Now that the data are in memory,
-we can manipulate them.
 First,
 let's ask what [type]({{ page.root }}/reference/#type) of thing `data` refers to:
 
@@ -128,9 +109,8 @@ print(type(data))
 
 The output tells us that `data` currently refers to
 an N-dimensional array, the functionality for which is provided by the NumPy library.
-These data correspond to arthritis patients' inflammation.
-The rows are the individual patients, and the columns
-are their daily inflammation measurements.
+The rows are the individual samples, and the columns
+are the absorption at each wavelength.
 
 > ## Data Type
 >
@@ -147,7 +127,7 @@ are their daily inflammation measurements.
 > {: .language-python}
 >
 > ~~~
-> dtype('float64')
+> 'float64'
 > ~~~
 > {: .output}
 >
@@ -163,12 +143,12 @@ print(data.shape)
 {: .language-python}
 
 ~~~
-(60, 40)
+(10, 1301)
 ~~~
 {: .output}
 
-The output tells us that the `data` array variable contains 60 rows and 40 columns. When we
-created the variable `data` to store our arthritis data, we didn't just create the array; we also
+The output tells us that the `data` array variable contains 10 rows and 1301 columns. When we
+created the variable `data` to store our absorption data, we didn't just create the array; we also
 created information about the array, called [members]({{ page.root }}/reference/#member) or
 attributes. This extra information describes `data` in the same way an adjective describes a noun.
 `data.shape` is an attribute of `data` which describes the dimensions of `data`. We use the same
@@ -177,7 +157,7 @@ they have the same part-and-whole relationship.
 
 If we want to get a single number from the array, we must provide an
 [index]({{ page.root }}/reference/#index) in square brackets after the variable name, just as we
-do in math when referring to an element of a matrix.  Our inflammation data has two dimensions, so
+do in math when referring to an element of a matrix.  Our absorption data has two dimensions, so
 we will need to use two indices to refer to one specific value:
 
 ~~~
@@ -186,21 +166,21 @@ print('first value in data:', data[0, 0])
 {: .language-python}
 
 ~~~
-first value in data: 0.0
+first value in data: 0.000447125
 ~~~
 {: .output}
 
 ~~~
-print('middle value in data:', data[30, 20])
+print('middle value in data:', data[5, 600])
 ~~~
 {: .language-python}
 
 ~~~
-middle value in data: 13.0
+middle value in data: 0.05236074
 ~~~
 {: .output}
 
-The expression `data[30, 20]` accesses the element at row 30, column 20. While this expression may
+The expression `data[5, 600]` accesses the element at row 5, column 600. While this expression may
 not surprise you,
  `data[0, 0]` might.
 Programming languages like Fortran, MATLAB and R start counting at 1
@@ -233,7 +213,7 @@ the index is how many steps we have to take from the start to get the item we wa
 {: .callout}
 
 ## Slicing data
-An index like `[30, 20]` selects a single element of an array,
+An index like `[5, 600]` selects a single element of an array,
 but we can select whole sections as well.
 For example,
 we can select the first ten days (columns) of values
@@ -245,10 +225,14 @@ print(data[0:4, 0:10])
 {: .language-python}
 
 ~~~
-[[ 0.  0.  1.  3.  1.  2.  4.  7.  8.  3.]
- [ 0.  1.  2.  1.  2.  1.  3.  2.  2.  6.]
- [ 0.  1.  1.  3.  3.  2.  6.  2.  5.  9.]
- [ 0.  0.  2.  0.  4.  2.  2.  1.  6.  7.]]
+[[ 0.00044712  0.00065559  0.00086406  0.00107252  0.00128099  0.00148945
+   0.00169792  0.00190638  0.00211485  0.00232331]
+ [-0.00366224 -0.00349741 -0.00334322 -0.0036817  -0.00405294 -0.00324795
+  -0.00336376 -0.00375587 -0.00342078 -0.00319713]
+ [ 0.00223267  0.00229731  0.00247506  0.00222341  0.00225055  0.00260366
+   0.00255431  0.00229944  0.00254705  0.00278302]
+ [ 0.0060851   0.00631194  0.00641883  0.00616071  0.00553703  0.00655359
+   0.00648117  0.00620936  0.00630154  0.00666987]]
 ~~~
 {: .output}
 
@@ -264,11 +248,16 @@ print(data[5:10, 0:10])
 {: .language-python}
 
 ~~~
-[[ 0.  0.  1.  2.  2.  4.  2.  1.  6.  4.]
- [ 0.  0.  2.  2.  4.  2.  2.  5.  5.  8.]
- [ 0.  0.  1.  2.  3.  1.  2.  3.  5.  3.]
- [ 0.  0.  0.  3.  1.  5.  6.  5.  5.  8.]
- [ 0.  1.  1.  2.  1.  3.  5.  3.  5.  8.]]
+[[0.01210117 0.01231773 0.01241982 0.01212973 0.01202739 0.01261753
+  0.01251138 0.01232068 0.01247477 0.01260437]
+ [0.01206768 0.01227019 0.01239462 0.01212571 0.01220084 0.01219452
+  0.0122772  0.01225797 0.01248005 0.01262111]
+ [0.01207713 0.01227696 0.01240005 0.01214027 0.01222512 0.01238692
+  0.01246438 0.01226141 0.01244613 0.01270402]
+ [0.00398183 0.0042223  0.00432843 0.00407767 0.00415076 0.00426605
+  0.00438313 0.00419297 0.00439255 0.0046121 ]
+ [0.0042104  0.00436906 0.00438802 0.00414603 0.0041499  0.00446744
+  0.00435411 0.00416835 0.00443187 0.00467494]]
 ~~~
 {: .output}
 
@@ -287,9 +276,12 @@ The above example selects rows 0 through 2 and columns 36 through to the end of 
 
 ~~~
 small is:
-[[ 2.  3.  0.  0.]
- [ 1.  1.  0.  1.]
- [ 2.  2.  1.  1.]]
+[[ 7.95187800e-03  8.16034400e-03  8.36880900e-03 ...  1.00000000e+01
+   1.29667747e+00  1.66669679e+00]
+ [-2.69293800e-03 -2.44559000e-03 -2.69407000e-03 ... -1.22419536e-01
+  -7.07442700e-03 -1.82473719e-01]
+ [ 3.43972300e-03  3.70568000e-03  3.41978900e-03 ...  3.31975669e-01
+   3.77199233e-01  3.53418890e-02]]
 ~~~
 {: .output}
 
@@ -315,13 +307,19 @@ print(doubledata[:3, 36:])
 
 ~~~
 original:
-[[ 2.  3.  0.  0.]
- [ 1.  1.  0.  1.]
- [ 2.  2.  1.  1.]]
+[[ 7.95187800e-03  8.16034400e-03  8.36880900e-03 ...  1.00000000e+01
+   1.29667747e+00  1.66669679e+00]
+ [-2.69293800e-03 -2.44559000e-03 -2.69407000e-03 ... -1.22419536e-01
+  -7.07442700e-03 -1.82473719e-01]
+ [ 3.43972300e-03  3.70568000e-03  3.41978900e-03 ...  3.31975669e-01
+   3.77199233e-01  3.53418890e-02]]
 doubledata:
-[[ 4.  6.  0.  0.]
- [ 2.  2.  0.  2.]
- [ 4.  4.  2.  2.]]
+[[ 1.59037560e-02  1.63206880e-02  1.67376180e-02 ...  2.00000000e+01
+   2.59335494e+00  3.33339357e+00]
+ [-5.38587600e-03 -4.89118000e-03 -5.38814000e-03 ... -2.44839072e-01
+  -1.41488540e-02 -3.64947438e-01]
+ [ 6.87944600e-03  7.41136000e-03  6.83957800e-03 ...  6.63951338e-01
+   7.54398466e-01  7.06837780e-02]]
 ~~~
 {: .output}
 
@@ -345,15 +343,17 @@ print(tripledata[:3, 36:])
 
 ~~~
 tripledata:
-[[ 6.  9.  0.  0.]
- [ 3.  3.  0.  3.]
- [ 6.  6.  3.  3.]]
+[[ 2.38556340e-02  2.44810320e-02  2.51064270e-02 ...  3.00000000e+01
+   3.89003241e+00  5.00009036e+00]
+ [-8.07881400e-03 -7.33677000e-03 -8.08221000e-03 ... -3.67258608e-01
+  -2.12232810e-02 -5.47421157e-01]
+ [ 1.03191690e-02  1.11170400e-02  1.02593670e-02 ...  9.95927007e-01
+   1.13159770e+00  1.06025667e-01]]
 ~~~
 {: .output}
 
 Often, we want to do more than add, subtract, multiply, and divide array elements.  NumPy knows how
-to do more complex operations, too.  If we want to find the average inflammation for all patients on
-all days, for example, we can ask NumPy to compute `data`'s mean value:
+to do more complex operations, too.  If we want to find the average absorption for all samples across all wavelengths, for example, we can ask NumPy to compute `data`'s mean value:
 
 ~~~
 print(numpy.mean(data))
@@ -361,7 +361,7 @@ print(numpy.mean(data))
 {: .language-python}
 
 ~~~
-6.14875
+0.0814548568076864
 ~~~
 {: .output}
 
@@ -399,8 +399,8 @@ a convenient Python feature that will enable us to do this all in one line.
 ~~~
 maxval, minval, stdval = numpy.max(data), numpy.min(data), numpy.std(data)
 
-print('maximum inflammation:', maxval)
-print('minimum inflammation:', minval)
+print('maximum absorption:', maxval)
+print('minimum absorption:', minval)
 print('standard deviation:', stdval)
 ~~~
 {: .language-python}
@@ -409,9 +409,9 @@ Here we've assigned the return value from `numpy.max(data)` to the variable `max
 from `numpy.min(data)` to `minval`, and so on.
 
 ~~~
-maximum inflammation: 20.0
-minimum inflammation: 0.0
-standard deviation: 4.61383319712
+maximum absorption: 10.0
+minimum absorption: -1.036568046
+standard deviation: 0.24849228257073133
 ~~~
 {: .output}
 
@@ -428,19 +428,19 @@ standard deviation: 4.61383319712
 
 When analyzing data, though,
 we often want to look at variations in statistical values,
-such as the maximum inflammation per patient
-or the average inflammation per day.
+such as the maximum absorption per sample
+or the average absorption per wavelength.
 One way to do this is to create a new temporary array of the data we want,
 then ask it to do the calculation:
 
 ~~~
-patient_0 = data[0, :] # 0 on the first axis (rows), everything on the second (columns)
-print('maximum inflammation for patient 0:', patient_0.max())
+sample_0 = data[0, :] # 0 on the first axis (rows), everything on the second (columns)
+print('maximum absorption for sample 0:', sample_0.max())
 ~~~
 {: .language-python}
 
 ~~~
-maximum inflammation for patient 0: 18.0
+maximum absorption for sample 0: 10.0
 ~~~
 {: .output}
 
@@ -453,17 +453,17 @@ We don't actually need to store the row in a variable of its own.
 Instead, we can combine the selection and the function call:
 
 ~~~
-print('maximum inflammation for patient 2:', numpy.max(data[2, :]))
+print('maximum absorption for sample 2:', numpy.max(data[2, :]))
 ~~~
 {: .language-python}
 
 ~~~
-maximum inflammation for patient 2: 19.0
+maximum absorption for sample 2: 0.37719923299999997
 ~~~
 {: .output}
 
-What if we need the maximum inflammation for each patient over all days (as in the
-next diagram on the left) or the average for each day (as in the
+What if we need the maximum absorption for each patient over all wavelengths (as in the
+next diagram on the left) or the average for each wavelength (as in the
 diagram on the right)? As the diagram below shows, we want to perform the
 operation across an axis:
 
@@ -480,14 +480,7 @@ print(numpy.mean(data, axis=0))
 {: .language-python}
 
 ~~~
-[  0.           0.45         1.11666667   1.75         2.43333333   3.15
-   3.8          3.88333333   5.23333333   5.51666667   5.95         5.9
-   8.35         7.73333333   8.36666667   9.5          9.58333333
-  10.63333333  11.56666667  12.35        13.25        11.96666667
-  11.03333333  10.16666667  10.           8.66666667   9.15         7.25
-   7.33333333   6.58333333   6.06666667   5.95         5.11666667   3.6
-   3.3          3.56666667   2.48333333   1.5          1.13333333
-   0.56666667]
+[0.00556981 0.00575402 0.00588247 ... 1.07087656 0.34124763 0.27600167]
 ~~~
 {: .output}
 
@@ -500,12 +493,12 @@ print(numpy.mean(data, axis=0).shape)
 {: .language-python}
 
 ~~~
-(40,)
+(1301,)
 ~~~
 {: .output}
 
-The expression `(40,)` tells us we have an N×1 vector,
-so this is the average inflammation per day for all patients.
+The expression `(1301,)` tells us we have an N×1 vector,
+so this is the average absorption per day for all samples.
 If we average across axis 1 (columns in our 2D example), we get:
 
 ~~~
@@ -514,16 +507,12 @@ print(numpy.mean(data, axis=1))
 {: .language-python}
 
 ~~~
-[ 5.45   5.425  6.1    5.9    5.55   6.225  5.975  6.65   6.625  6.525
-  6.775  5.8    6.225  5.75   5.225  6.3    6.55   5.7    5.85   6.55
-  5.775  5.825  6.175  6.1    5.8    6.425  6.05   6.025  6.175  6.55
-  6.175  6.35   6.725  6.125  7.075  5.725  5.925  6.15   6.075  5.75
-  5.975  5.725  6.3    5.9    6.75   5.925  7.225  6.15   5.95   6.275  5.7
-  6.1    6.825  5.975  6.725  5.7    6.25   6.4    7.05   5.9  ]
+[0.13104075 0.02947129 0.02323768 0.08578812 0.07745822 0.10012283
+ 0.10339795 0.09871813 0.08216419 0.08314941]
 ~~~
 {: .output}
 
-which is the average inflammation per patient across all days.
+which is the average absorption per sample across all wavelengths.
 
 > ## Encapsulation
 >
@@ -641,109 +630,5 @@ which is the average inflammation per patient across all days.
 > >  [7 9]]
 > > ~~~
 > > {: .output}
-> {: .solution}
-{: .challenge}
-
-> ## Change In Inflammation
->
-> This patient data is _longitudinal_ in the sense that each row represents a
-> series of observations relating to one individual.  This means that
-> the change in inflammation over time is a meaningful concept.
->
-> The `numpy.diff()` function takes a NumPy array and returns the
-> differences between two successive values along a specified axis.  For
-> example, a NumPy array that looks like this:
->
-> ~~~
-> npdiff = numpy.array([ 0,  2,  5,  9, 14])
-> ~~~
-> {: .language-python}
->
-> Calling `numpy.diff(npdiff)` would do the following calculations and
-> put the answers in another array.
->
-> ~~~
-> [ 2 - 0, 5 - 2, 9 - 5, 14 - 9 ]
-> ~~~
-> {: .language-python}
->
-> ~~~
-> numpy.diff(npdiff)
-> ~~~
-> {: .language-python}
->
-> ~~~
-> array([2, 3, 4, 5])
-> ~~~
-> {: .language-python}
->
-> Which axis would it make sense to use this function along?
->
-> > ## Solution
-> > Since the row axis (0) is patients, it does not make sense to get the
-> > difference between two arbitrary patients. The column axis (1) is in
-> > days, so the difference is the change in inflammation -- a meaningful
-> > concept.
-> >
-> > ~~~
-> > numpy.diff(data, axis=1)
-> > ~~~
-> > {: .language-python}
-> {: .solution}
->
-> If the shape of an individual data file is `(60, 40)` (60 rows and 40
-> columns), what would the shape of the array be after you run the `diff()`
-> function and why?
->
-> > ## Solution
-> > The shape will be `(60, 39)` because there is one fewer difference between
-> > columns than there are columns in the data.
-> {: .solution}
->
-> How would you find the largest change in inflammation for each patient? Does
-> it matter if the change in inflammation is an increase or a decrease?
->
-> > ## Solution
-> > By using the `numpy.max()` function after you apply the `numpy.diff()`
-> > function, you will get the largest difference between days.
-> >
-> > ~~~
-> > numpy.max(numpy.diff(data, axis=1), axis=1)
-> > ~~~
-> > {: .language-python}
-> >
-> > ~~~
-> > array([  7.,  12.,  11.,  10.,  11.,  13.,  10.,   8.,  10.,  10.,   7.,
-> >          7.,  13.,   7.,  10.,  10.,   8.,  10.,   9.,  10.,  13.,   7.,
-> >         12.,   9.,  12.,  11.,  10.,  10.,   7.,  10.,  11.,  10.,   8.,
-> >         11.,  12.,  10.,   9.,  10.,  13.,  10.,   7.,   7.,  10.,  13.,
-> >         12.,   8.,   8.,  10.,  10.,   9.,   8.,  13.,  10.,   7.,  10.,
-> >          8.,  12.,  10.,   7.,  12.])
-> > ~~~
-> > {: .language-python}
-> >
-> > If inflammation values *decrease* along an axis, then the difference from
-> > one element to the next will be negative. If
-> > you are interested in the **magnitude** of the change and not the
-> > direction, the `numpy.absolute()` function will provide that.
-> >
-> > Notice the difference if you get the largest _absolute_ difference
-> > between readings.
-> >
-> > ~~~
-> > numpy.max(numpy.absolute(numpy.diff(data, axis=1)), axis=1)
-> > ~~~
-> > {: .language-python}
-> >
-> > ~~~
-> > array([ 12.,  14.,  11.,  13.,  11.,  13.,  10.,  12.,  10.,  10.,  10.,
-> >         12.,  13.,  10.,  11.,  10.,  12.,  13.,   9.,  10.,  13.,   9.,
-> >         12.,   9.,  12.,  11.,  10.,  13.,   9.,  13.,  11.,  11.,   8.,
-> >         11.,  12.,  13.,   9.,  10.,  13.,  11.,  11.,  13.,  11.,  13.,
-> >         13.,  10.,   9.,  10.,  10.,   9.,   9.,  13.,  10.,   9.,  10.,
-> >         11.,  13.,  10.,  10.,  12.])
-> > ~~~
-> > {: .language-python}
-> >
 > {: .solution}
 {: .challenge}
