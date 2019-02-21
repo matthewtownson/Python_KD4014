@@ -152,7 +152,7 @@ print(data)
 The final thing left to do is print our cleaned dataset to a file for analysing later. To do this we can use the `to_csv` DataFrame method. We set the `header` and `index` parameters to `False` as we do not want to print these to the file.
 
 ~~~
-data.to_csv('UVVis-01-cleaned.csv', header=False, index=False)
+data.to_csv('./data/UVVis-01-cleaned.csv', header=False, index=False)
 ~~~
 {: .language-python}
 

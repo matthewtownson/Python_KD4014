@@ -39,7 +39,7 @@ Let's use option two.
 import numpy
 import matplotlib.pyplot
 
-data = numpy.loadtxt(fname='UVVis-01-cleaned.csv', delimiter=',')
+data = numpy.loadtxt(fname='./data/UVVis-01-cleaned.csv', delimiter=',')
 wavelengths = pandas.read_csv("./data/UVVis-01.csv",usecols=[0],header=None).to_numpy()
 
 data_slice = data[:,650:800]
@@ -52,12 +52,15 @@ axes2 = fig.add_subplot(1, 3, 2)
 axes3 = fig.add_subplot(1, 3, 3)
 
 axes1.set_ylabel('average')
+axes1.set_xlabel('wavelength')
 axes1.plot(wavelength_slice,numpy.mean(data_slice, axis=0))
 
 axes2.set_ylabel('max')
+axes2.set_xlabel('wavelength')
 axes2.plot(wavelength_slice,numpy.max(data_slice, axis=0))
 
 axes3.set_ylabel('min')
+axes3.set_xlabel('wavelength')
 axes3.plot(wavelength_slice,numpy.min(data_slice, axis=0))
 
 fig.tight_layout()
@@ -91,11 +94,12 @@ python3 absorption_plots.py
 ~~~
 {: .language-bash}
 
-The data files that are read in by the script are currently hard coded - they cannot be changed without changing the code itself. We can import the `sys` library which allows us to provide command line arguments specifying the filenames for our data. The first command line argument is accessed with the variable `sys.argv[0]` , the second command line argument is accessed with the `sys.argv[1]` argument and so on. 
+The data files that are read in by the script are currently hard coded - they cannot be changed without changing the code itself. Instead, we can import the `sys` library which allows us to provide command line arguments specifying the filenames for our data. The first command line argument is accessed with the variable `sys.argv[1]` , the second command line argument is accessed with the `sys.argv[2]` argument and so on. We can adapt the `absorption_plots.py` script as follows:
 
 ~~~
 import sys
 import numpy
+import pandas
 import matplotlib.pyplot
 
 data = numpy.loadtxt(fname=sys.argv[0], delimiter=',')
@@ -127,9 +131,9 @@ matplotlib.pyplot.show()
 ~~~
 {: .language-python}
 
-In this example `sys.argv[0]` should correspond to the cleaned data file, and `sys.argv[1]` should correspond to the original data file. 
+In this example `sys.argv[1]` should correspond to the cleaned data file, and `sys.argv[2]` should correspond to the original data file. 
 
 ~~~
-python3 absorption_plots.py UVVis-01-cleaned.csv UVVis-01.csv
+python3 absorption_plots.py ./data/UVVis-01-cleaned.csv ./data/UVVis-01.csv
 ~~~
 {: .language-bash}
