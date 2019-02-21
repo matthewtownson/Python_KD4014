@@ -30,7 +30,7 @@ file for us:
 
 ~~~
 import numpy
-numpy.loadtxt(fname='UVVis-01-cleaned.csv', delimiter=',')
+numpy.loadtxt(fname='./data/UVVis-01-cleaned.csv', delimiter=',')
 ~~~
 {: .language-python}
 
@@ -64,7 +64,7 @@ Let's re-run
 `numpy.loadtxt` and save the returned data:
 
 ~~~
-data = numpy.loadtxt(fname='UVVis-01-cleaned.csv', delimiter=',')
+data = numpy.loadtxt(fname='./data/UVVis-01-cleaned.csv', delimiter=',')
 ~~~
 {: .language-python}
 
