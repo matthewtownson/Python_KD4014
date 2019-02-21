@@ -79,6 +79,7 @@ matplotlib.pyplot.show()
 > ~~~
 > {: .language-python}
 >
+>
 > This uses the [nbconvert tool](https://github.com/jupyter/nbconvert).
 > 
 {: .callout}
@@ -90,7 +91,7 @@ python3 absorption_plots.py
 ~~~
 {: .language-bash}
 
-At the moment our 
+The data files that are read in by the script are currently hard coded - they cannot be changed without changing the code itself. We can import the `sys` library which allows us to provide command line arguments specifying the filenames for our data. The first command line argument is accessed with the variable `sys.argv[0]` , the second command line argument is accessed with the `sys.argv[1]` argument and so on. 
 
 ~~~
 import sys
@@ -126,4 +127,9 @@ matplotlib.pyplot.show()
 ~~~
 {: .language-python}
 
-To take a command line argument
+In this example `sys.argv[0]` should correspond to the cleaned data file, and `sys.argv[1]` should correspond to the original data file. 
+
+~~~
+python3 absorption_plots.py UVVis-01-cleaned.csv UVVis-01.csv
+~~~
+{: .language-bash}
