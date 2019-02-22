@@ -5,6 +5,9 @@ permalink: /setup/
 root: ..
 ---
 
+To participate in the Python workshop you will need access to the software described below.
+In addition, you will need an up-to-date web browser.
+
 ## Installing Python Using Anaconda
 
 [Python][python] is a popular language for scientific computing, and great for
@@ -70,6 +73,71 @@ If you run into any difficulties, please request help before the workshop begins
         enter again to approve the default location for the files. Type `yes` and 
         press enter to prepend Anaconda to your `PATH` (this makes the Anaconda 
         distribution the default Python).
+        
+        
+## Installing Bash
+
+Bash is a commonly-used shell that gives you the power to do simple tasks more quickly.
+
+### Windows - [video tutorial](https://www.youtube.com/watch?v=339AEqk9c-8)
+
+1. Download the Git for Windows [installer](https://git-for-windows.github.io/)
+
+2. Run the installer and follow the steps below:
+    
+    a) Click on "Next" four times (two times if you've previously
+                installed Git).  You don't need to change anything
+                in the Information, location, components, and start menu screens.
+ 
+    b) Select “Use the nano editor by default” and click on “Next”.
+
+    c) Keep "Use Git from the command line and..." selected and click on "Next".
+                If you forgot to do this programs that you need for the workshop will not work properly.
+                If this happens rerun the installer and select the appropriate option.
+                
+    d) Click on "Next"
+    
+    e) Keep "Checkout Windows-style, commit Unix-style line endings" selected and click on "Next".
+
+    f) Select "Use Windows' default console window" and click on "Next".
+    
+    g) Click on "Install"
+    
+    h) Click on "Finish"
+
+3. If your "HOME" environment variable is not set (or you don't know what this is):
+
+   a) Open command prompt (Open Start Menu then type <code>cmd</code> and press [Enter])
+
+   b) Type the following line into the command prompt window exactly as shown:
+     `setx HOME "%USERPROFILE%"`
+
+   c) Press [Enter], you should see `SUCCESS: Specified value was saved.`
+  
+  d) Quit command prompt by typing `exit` then pressing [Enter]
+
+This will provide you with both Git and Bash in the Git Bash program.
+
+
+### macOS
+
+ The default shell in all versions of macOS is Bash, so no
+        need to install anything.  You access Bash from the Terminal
+        (found in
+        `/Applications/Utilities`).
+       
+See the Git installation <a href="https://www.youtube.com/watch?v=9LQhwETCdwY ">video tutorial</a>
+        for an example on how to open the Terminal.
+        You may want to keep
+        Terminal in your dock for this workshop.
+
+### Linux
+
+The default shell is usually Bash, but if your
+        machine is set up differently you can run it by opening a
+        terminal and typing `bash`.  There is no need to
+        install anything.
+
 
 ## Getting the Data
 
@@ -112,3 +180,8 @@ $ python
 [python]: https://python.org
 [video-mac]: https://www.youtube.com/watch?v=TcSAln46u9U
 [video-windows]: https://www.youtube.com/watch?v=xxQ0mzZ8UvA
+
+
+
+
+  
