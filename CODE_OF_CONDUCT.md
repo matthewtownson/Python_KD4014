@@ -1,9 +1,10 @@
 ---
 layout: page
-title: "Contributor Code of Conduct"
+title: "Code of Conduct"
 ---
-As contributors and maintainers of this project,
-we pledge to follow the [Carpentry Code of Conduct][coc].
+The Carpentries is a community-led project. We value the involvement of everyone in the community. We are committed to creating a friendly and respectful place for learning, teaching and contributing. All participants in our events and communications are expected to show respect and courtesy to others.
+
+To make clear what is expected, everyone participating in Carpentry activities is required to conform to the [Code of Conduct][coc]. 
 
 Instances of abusive, harassing, or otherwise unacceptable behavior
 may be reported by following our [reporting guidelines][coc-reporting].
