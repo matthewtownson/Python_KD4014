@@ -1,5 +1,7 @@
 # Contributing
 
+Note that outlined below is guidance for contributing to the original Python gapminder lesson. If you would like to suggest changes for lucydot's adapted Python UVVis lesson, please [email your suggestions][contact] or submit a pull request via Github (see the 'Using Github' section below). 
+ 
 [Software Carpentry][swc-site] and [Data Carpentry][dc-site] are open source projects,
 and we welcome contributions of all kinds:
 new lessons,
