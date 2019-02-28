@@ -5,7 +5,7 @@ root: .
 
 This lesson is an introduction to programming in Python
 for people with little or no previous programming experience.
-It uses plotting as its motivating example.
+It uses plotting UV-Vis data as its motivating example.
 This lesson references the Jupyter Notebook,
 but can be taught using a regular Python interpreter as well.
 Please note that this lesson uses Python 3 rather than Python 2.
