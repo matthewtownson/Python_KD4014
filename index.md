@@ -12,6 +12,8 @@ Please note that this lesson uses Python 3 rather than Python 2.
 
 This lesson is adapted from the [Imperial College London lesson](https://imperialcollegelondon.github.io/python-novice-mix/), which was designed to be used in [Software Carpentry]({{ site.swc_site }}) workshops.
 
+The presentation which accompanies this lesson can be found [here](https://lucydot.github.io/slides/Python_0319)
+
 > ## Prerequisites
 > 1. Learners must install Python before the class starts.
 >    Please see [the setup instructions]({{ page.root }}/setup/)
