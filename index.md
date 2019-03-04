@@ -19,9 +19,9 @@ The presentation which accompanies this lesson can be found [here](https://lucyd
 >    Please see [the setup instructions]({{ page.root }}/setup/)
 >    for details.
 >
-> 2. Learners must get the inflammation data before class starts:
->    please download and unzip the file 
->    [python-novice-inflammation-data.zip]({{page.root}}/data/python-novice-inflammation-data.zip).
+> 2. Learners must get the data before class/
+>    Please see [the setup instructions]({{page.root}}/setup/)
+>    for details.
 >
 > 3.  Learners need to understand what a file, directory
 >     and working directory is
