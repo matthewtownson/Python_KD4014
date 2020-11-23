@@ -159,6 +159,8 @@ installed Python using Anaconda, Jupyter should already be on your system. If
 you did not use Anaconda, use the Python package manager pip
 (see the [Jupyter website][jupyter-install] for details.)
 
+## Check that jupyter notebook is installed
+
 To start the notebook, open a terminal or git bash and type the command:
 
 ~~~
