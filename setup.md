@@ -98,9 +98,15 @@ Bash is a commonly-used shell that gives you the power to do simple tasks more q
 
     f) Select "Use Windows' default console window" and click on "Next".
     
-    g) Click on "Install"
+    g) Ensure that "Default (fast-forward or merge) is selected and click "Next"
+
+    h) Ensure that "Git Credential Manager Core" is selected and click on "Next".
+
+    i) Ensure that "Enable file system caching" is selected and click on "Next". 
     
-    h) Click on "Finish"
+    j) Click on "Install"
+    
+    k) Click on "Finish"
 
 3. If your "HOME" environment variable is not set (or you don't know what this is):
 
