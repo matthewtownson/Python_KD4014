@@ -27,8 +27,7 @@ in advance of the workshop.
 2. Download the Python 3 installer for Windows.
 
 3. Double-click the executable and install Python 3 using _MOST_ of the
-   default settings. The only exception is to check the 
-   **Make Anaconda the default Python** option.
+   default settings, the only exception is to check **Add Anaconda to my PATH environment variable**.
 
 ### Mac OS X - [Video tutorial][video-mac]
 
