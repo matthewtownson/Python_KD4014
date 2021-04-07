@@ -14,6 +14,7 @@ This lesson is adapted from the [Imperial College London lesson](https://imperia
 
 > ## Accompanying resources
 > The presentation which accompanies this lesson can be found [here](https://lucydot.github.io/slides/Python_0319) and a pdf of the teaching notes can be downloaded > from [here](https://raw.githubusercontent.com/lucydot/slides/gh-pages/Python_0219/Python_0219_notes.pdf).
+> 
 {: .prereq}
 
 > ## Prerequisites
