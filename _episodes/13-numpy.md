@@ -514,6 +514,33 @@ print(numpy.mean(data, axis=1))
 
 which is the average absorption per sample across all wavelengths.
 
+> ## Creating Numpy arrays
+>
+> In the examples above we imported data from a file as a Numpy array. However there are other ways to create a Numpy array.
+> For example, the following code creates an array filled with zeros and then populates it with the velocity of a ball at a sequence of evenly spaced times.
+> 
+> ~~~
+> import numpy
+>
+> g = 6.67408e-11
+> velocity_list = numpy.zeros(50)
+> for index,time in enumerate(numpy.linspace(0,10,50)):
+>        velocity_list[index] = g*time
+> ~~~
+> {: .python}
+>
+> What does `numpy.linspace` generate? What is the `enumerate` function?
+> Using the numpy `round` function, round all of the velocity values to two decimal places
+>
+> > ## Solution
+> >
+> > ~~~
+> > numpy.round(velocity_list, decimals=2) 
+> > ~~~
+> {: .python}
+> {: .solution}
+{: .challenge}
+
 > ## Encapsulation
 >
 > Fill in the blanks to create a function that takes a single filename, containing comma separated values, as an argument,
