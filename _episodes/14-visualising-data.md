@@ -237,7 +237,7 @@ The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figu
 > > {: .language-python}
 > {: .solution}
 >
-> Use the polyval function to generate and plot velocities over the timeframe 30 to 100 seconds
+> Use the polyval function to generate and plot velocities over the timeframe 30 to 100 seconds.
 > 
 > >  ## Solution
 > > ~~~
