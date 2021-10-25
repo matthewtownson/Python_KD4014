@@ -212,14 +212,14 @@ The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figu
 > for index,time in enumerate(numpy.linspace(0,10,50)):
 >        velocity_list[index] = v_0 + g*time
 > ~~~
-> {: .python}
+> {: .language-python}
 >
 > We can fit a polynomial to this data using the `numpy.polyfit` function. In this case, we know that is is a first order polynomial (straight line)
 > ~~~
 > fit = numpy.polyfit(numpy.linspace(0,10,50), velocity_list, 1)
 > print(fit)
 > ~~~
-> {: .python}
+> {: .language-python}
 > 
 > What is the gradient and intercept of the straight line fit? Does this make physical sense? 
 > Make a scatter plot of velocity vs time. Label the x-axis and y-axis (with units) and give the plot a title.
