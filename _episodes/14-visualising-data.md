@@ -233,6 +233,7 @@ The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figu
 > > plt.xlabel("Time (s)")
 > > plt.ylabel("Velocity (m/s)")
 > > plt.title("Velocity of an object accelerated by gravity")
+> > ~~~
 > > {: .language-python}
 > {: .solution}
 >
@@ -247,6 +248,7 @@ The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figu
 > > plt.xlabel("Time (s)")
 > > plt.ylabel("Velocity (m/s)")
 > > plt.title("Velocity of an object accelerated by gravity")
+> > ~~~
 > > {: .language-python}
 > {: .solution}
 {: .challenge}
