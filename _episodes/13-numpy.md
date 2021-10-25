@@ -517,15 +517,17 @@ which is the average absorption per sample across all wavelengths.
 > ## Creating Numpy arrays
 >
 > In the examples above we imported data from a file as a Numpy array. However there are other ways to create a Numpy array.
-> For example, the following code creates an array filled with zeros and then populates it with the velocity of a ball at a sequence of evenly spaced times.
+> For example, the following code creates an array filled with zeros and then populates it with the velocity of a ball at a sequence of evenly spaced times between 0 and 10 seconds.
 > 
 > ~~~
 > import numpy
 >
-> g = 6.67408e-11
+> g = 6.67408e-11 # gravitational constant
 > velocity_list = numpy.zeros(50)
+> v_0 = 0 # starting velocity
+> 
 > for index,time in enumerate(numpy.linspace(0,10,50)):
->        velocity_list[index] = g*time
+>        velocity_list[index] = v_0 + g*time
 > ~~~
 > {: .python}
 >
