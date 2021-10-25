@@ -3,4 +3,5 @@ layout: page
 title: About
 permalink: /about/
 ---
-{% include carpentries.html %}
+
+This website is maintained by [Lucy Whalley](https://lucydot.github.io) at [Northumbria University](https://www.northumbria.ac.uk/). It is adapted from a template workshop designed by [The Carpentries](https://carpentries.org/).
