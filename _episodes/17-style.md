@@ -40,7 +40,7 @@ Assertions are a simple, but powerful method for making sure that the context in
 
 ~~~
 def calc_bulk_density(mass, volume):  
-    assert volume > 0
+    assert volume > 0, "Volume is less than zero (unphysical)"
     return mass / volume
 ~~~
 {: .python}
