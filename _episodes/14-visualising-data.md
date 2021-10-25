@@ -239,7 +239,7 @@ The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figu
 >
 > Use the polyval function to generate and plot velocities over the timeframe 30 to 100 seconds.
 > 
-> >  ## Solution
+> > ## Solution
 > > ~~~
 > > import matplotlib.pyplot as plt
 > >
@@ -255,7 +255,9 @@ The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figu
 
 > ## Error bars and exponential growth
 > 
-> This question is partly modelled on the following blog post: https://towardsdatascience.com/modeling-exponential-growth-49a2b6f22e1f.
+> This question is partly modelled on the following blog post: https://towardsdatascience.com/modeling-exponential-growth-49a2b6f22e1f. There is also a nice
+> 3Blue1Brown video on exponential growth in the context of Covid: https://www.youtube.com/watch?v=Kas0tIxDvrg.
+> 
 > We have the following (hypothetical) data for the growth in Covid cases at a university over a two-week period
 > ~~~
 > import numpy as np
