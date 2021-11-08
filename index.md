@@ -10,8 +10,13 @@ This lesson references the Jupyter Notebook,
 but can be taught using a regular Python interpreter as well.
 Please note that this lesson uses Python 3 rather than Python 2.
 
+> ## Course questionnaire
+> For KD4014 students only: at the start of the course please complete this questionnaire: https://forms.office.com/r/WF0tJYXUwR
+>
+{: .prereq}
+
 > ## Accompanying resources
-> The presentation which accompanies this lesson can be found [here](https://lucydot.github.io/slides/Python_0319) and a pdf of the teaching notes can be downloaded from [here](https://raw.githubusercontent.com/lucydot/slides/gh-pages/Python_0219/Python_0219_notes.pdf).
+> The presentation which accompanies this lesson can be found [here](https://lucydot.github.io/slides/Python_2111). Assessment details can be found on the KD4014 Blackboard.
 > 
 {: .prereq}
 
