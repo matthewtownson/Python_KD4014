@@ -70,6 +70,12 @@ $ python
 ~~~
 {: .bash}
 
+## Binder as an alternative
+
+As a (not so great) alternative you can complete the tutorials in this course using the Binder service running through a web browser. Simply click on the "launch binder" button here: [https://github.com/lucydot/empty_binder](https://github.com/lucydot/empty_binder), wait a while whilst the virtual environment is created, and then click on `Python 3` under Notebook.
+
+Why is this a not-so-great alternative? Well firstly, the binder will time-out after a period of inactivity (about 15 minutes) and so you risk losing your work! Secondly, your work cannot be stored on Binder - so you will have to download if you would like to keep a copy. Thirdly, you cannot upload your work - so you have to start from scratch each time you use it. But still, if you cannot access Jupyter Notebook any other way - this is an option that requires only a web browser and internet connection.
+
 [anaconda]: https://www.anaconda.com/
 [continuum-mac]: https://www.anaconda.com/download/#macos
 [continuum-linux]: https://www.anaconda.com/download/#linux
