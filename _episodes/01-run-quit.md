@@ -131,6 +131,8 @@ keypoints:
 
 ## Markdown does most of what HTML does.
 
+* For more Markdown examples see [this article](https://towardsdatascience.com/the-ultimate-markdown-cheat-sheet-3d3976b31a0) from the towards data science website.
+
 <div class="row">
   <div class="col-md-6" markdown="1">
 ~~~
