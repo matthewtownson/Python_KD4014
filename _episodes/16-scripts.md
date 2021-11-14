@@ -39,10 +39,11 @@ Let's use option two.
 import numpy
 import matplotlib.pyplot
 
-data = numpy.loadtxt(fname='./data/UVVis-01-cleaned.csv', delimiter=',')
-wavelengths = pandas.read_csv("./data/UVVis-01.csv",usecols=[0],header=None).to_numpy()
+data = numpy.loadtxt(fname='./data/UVVis-01-cleaned.csv')
+wavelengths = data[0,:]
+absorption_data = data[1,:]
 
-data_slice = data[:,650:800]
+data_slice = absorption_data[:,650:800]
 wavelength_slice = wavelengths[650:800]
 
 fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
@@ -99,13 +100,13 @@ The data files that are read in by the script are currently hard coded - they ca
 ~~~
 import sys
 import numpy
-import pandas
 import matplotlib.pyplot
 
-data = numpy.loadtxt(fname=sys.argv[0], delimiter=',')
-wavelengths = pandas.read_csv(sys.argv[1],usecols=[0],header=None).to_numpy()
+data = numpy.loadtxt(fname='./data/UVVis-01-cleaned.csv')
+wavelengths = data[0,:]
+absorption_data = data[1,:]
 
-data_slice = data[:,650:800]
+data_slice = absorption_data[:,650:800]
 wavelength_slice = wavelengths[650:800]
 
 fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
