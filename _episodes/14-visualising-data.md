@@ -215,7 +215,7 @@ The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figu
 > ~~~
 > import numpy
 >
-> g = 6.67408e-11
+> g = 9.81
 > velocity_list = numpy.zeros(50)
 > v_0 = 0
 > 
@@ -235,7 +235,7 @@ The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figu
 > Make a scatter plot of velocity vs time. Label the x-axis and y-axis (with units) and give the plot a title.
 >
 > > ## Solution
-> > The gradient is equal to the acceleration of the ball which is given by the gravitational constant $g$. The intercept is the starting velocity of the ball, which in this example is zero.
+> > The gradient is equal to the acceleration of the ball which is given by the acceleration due to gravity. The intercept is the starting velocity of the ball, which in this example is zero.
 > > ~~~
 > > import matplotlib.pyplot as plt
 > >
