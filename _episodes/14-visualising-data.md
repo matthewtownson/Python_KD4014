@@ -216,11 +216,11 @@ The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figu
 > import numpy
 >
 > g = 9.81
-> velocity_list = numpy.zeros(50)
+> velocity_array = numpy.zeros(50)
 > v_0 = 0
 > 
 > for index,time in enumerate(numpy.linspace(0,10,50)):
->        velocity_list[index] = v_0 + g*time
+>        velocity_array[index] = v_0 + g*time
 > ~~~
 > {: .language-python}
 >
@@ -271,7 +271,7 @@ The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figu
 > We have the following (hypothetical) data for the growth in Covid cases at a university over a two-week period
 > ~~~
 > import numpy as np
-> day = np.arange(0,14)
+> day = np.arange(0,15)
 > case_numbers = np.array([2,3,4,8,15,32,65,128,253,512,1025,2049,4090,8191,16387])
 > ~~~
 > {: .language-python}
