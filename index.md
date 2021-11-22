@@ -11,7 +11,7 @@ but can be taught using a regular Python interpreter as well.
 Please note that this lesson uses Python 3 rather than Python 2.
 
 > ## Accompanying resources
-> The presentation which accompanies this lesson can be found [here](https://lucydot.github.io/slides/Python_2111). Assessment details can be found on the KD4014 Blackboard.
+> The presentation which accompanies this lesson can be found [here](https://lucydot.github.io/slides/Python_2111). 
 > 
 {: .prereq}
 
