@@ -11,8 +11,8 @@ but can be taught using a regular Python interpreter as well.
 Please note that this lesson uses Python 3 rather than Python 2.
 
 > ## Accompanying resources
-> The presentation which accompanies this lesson can be found [here](https://lucydot.github.io/slides/Python_2111). 
-> 
+> The presentation which accompanies course KD4014 at Northumbria University can be found [here](https://lucydot.github.io/slides/Python_2111). 
+> The presentation which accompanies the CDT-ReNU training programme can be found [here](https://lucydot.github.io/slides/Python_211122).
 {: .prereq}
 
 > ## Prerequisites
