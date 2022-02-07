@@ -1,4 +1,4 @@
-python-novice-mix
+python-for-physical-scientists
 =================
 
 <https://lucydot.github.io/python_novice/>
@@ -6,11 +6,8 @@ python-novice-mix
 This is an introduction to Python for non-programmers based on content from
 the two software carpentry courses:
 [python-novice-gapminder][python-novice-gapminder] and
-[python-novice-inflammation][python-novice-inflammation], where the gentler
-introduction of the former course is favoured and forms the core of this
-course, while the focus on the simpler numpy rather than pandas of the latter
-is used for the second half. Some of the timings and exercises associated with
-each episode have been modified to accommodate this restructuring.
+[python-novice-inflammation][python-novice-inflammation]. It has been adapted
+for use with scientists in the physical sciences, using UVVis data as a motivating example.
 
 
 [python-novice-inflammation]: https://github.com/swcarpentry/python-novice-inflammation
