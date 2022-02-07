@@ -215,12 +215,12 @@ The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figu
 > ~~~
 > import numpy
 >
-> g = 6.67408e-11
-> velocity_list = numpy.zeros(50)
+> g = 9.81
+> velocity_array = numpy.zeros(50)
 > v_0 = 0
 > 
 > for index,time in enumerate(numpy.linspace(0,10,50)):
->        velocity_list[index] = v_0 + g*time
+>        velocity_array[index] = v_0 + g*time
 > ~~~
 > {: .language-python}
 >
@@ -235,7 +235,7 @@ The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figu
 > Make a scatter plot of velocity vs time. Label the x-axis and y-axis (with units) and give the plot a title.
 >
 > > ## Solution
-> > The gradient is equal to the acceleration of the ball which is given by the gravitational constant $g$. The intercept is the starting velocity of the ball, which in this example is zero.
+> > The gradient is equal to the acceleration of the ball which is given by the acceleration due to gravity. The intercept is the starting velocity of the ball, which in this example is zero.
 > > ~~~
 > > import matplotlib.pyplot as plt
 > >
@@ -271,7 +271,7 @@ The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figu
 > We have the following (hypothetical) data for the growth in Covid cases at a university over a two-week period
 > ~~~
 > import numpy as np
-> day = np.arange(0,14)
+> day = np.arange(0,15)
 > case_numbers = np.array([2,3,4,8,15,32,65,128,253,512,1025,2049,4090,8191,16387])
 > ~~~
 > {: .language-python}

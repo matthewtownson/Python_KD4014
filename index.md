@@ -10,14 +10,9 @@ This lesson references the Jupyter Notebook,
 but can be taught using a regular Python interpreter as well.
 Please note that this lesson uses Python 3 rather than Python 2.
 
-> ## Course questionnaire
-> For KD4014 students only: at the start of the course please complete this questionnaire: https://forms.office.com/r/WF0tJYXUwR
->
-{: .prereq}
-
 > ## Accompanying resources
-> The presentation which accompanies this lesson can be found [here](https://lucydot.github.io/slides/Python_2111). Assessment details can be found on the KD4014 Blackboard.
-> 
+> The presentation which accompanies the CDT-ReNU training programme can be found [here](https://lucydot.github.io/slides/Python_211122).    
+> The presentatioin which accompanies the Level 6 course at Northumbria University can be found [here](https://lucydot.github.io/slides/Python_2201)  
 {: .prereq}
 
 > ## Prerequisites

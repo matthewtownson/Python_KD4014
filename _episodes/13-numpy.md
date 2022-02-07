@@ -506,7 +506,7 @@ which is the average absorption per sample across all wavelengths.
 > ~~~
 > import numpy
 >
-> g = 6.67408e-11 # gravitational constant
+> g = 9.81 # acceleration due to gravity
 > velocity_list = numpy.zeros(50)
 > v_0 = 0 # starting velocity
 > 
