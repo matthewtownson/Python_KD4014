@@ -416,3 +416,30 @@ result of call is: None
 > > {: .python}
 > {: .solution}
 {: .challenge}
+
+> ## Error propagation
+>
+> In experimental work it is common for a quantity of interest to be calculated from a combination of direct measurements. It is important to remember that all 
+>  experimentally measured quantities present an uncertainty that will affect the final result.
+> 
+> The uncertainty is determined by the measurement instrument and settings. For example, if we measure a triangle with a caliper (resolution 0.1mm) we will get a 
+> more accurate value than if we use a ruler (resolution 1mm). But remember that whichever instrument we use we will introduce some amount of uncertainty.
+> 
+> This uncertainty can be quantified using error propagation formulae 
+> (for more on this there is a website [here](https://www.geol.lsu.edu/jlorenzo/geophysics/uncertainties/Uncertaintiespart2.html)). For example, if we are
+> adding two quantities together ($Z=X+Y$) the standard error $\Delta Z$ can be calculated using the relation $(\Delta Z)^2 = (\Delta X)^2 + (\Delta Y)^2$
+>
+> Write a function which calculates the perimeter of an equilateral triangle and the standard error associated with this perimeter. 
+> The function argument will specify the length of the triangle sides and the uncertainty associated with each measurement.
+> 
+> > ## Solution
+> >
+> > ~~~
+> > def perimeter_error(length, uncertainty):
+> >     perimeter = length + length + length
+> >     perimeter_error = math.sqrt(uncertainty**2+uncertainty**2+uncertainty**2)
+> >     return perimeter, perimeter_error
+> > ~~~
+> > {: .python}
+> {: .solution}
+{: .challenge}

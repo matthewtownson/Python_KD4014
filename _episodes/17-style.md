@@ -40,18 +40,18 @@ Assertions are a simple, but powerful method for making sure that the context in
 
 ~~~
 def calc_bulk_density(mass, volume):  
-    assert volume > 0
+    assert volume > 0, "Volume is less than zero (unphysical)"
     return mass / volume
 ~~~
 {: .python}
 
 If the assertion is `False`, the Python interpreter raises an `AssertionError` runtime exception. The source code for the expression that failed will be displayed as part of the error message. To ignore assertions in your code run the interpreter with the '-O' (optimize) switch. Assertions should contain only simple checks and never change the state of the program. For example, an assertion should never contain an assignment.
 
-## Use docstrings to provide online help.
+## Use docstrings to provide help.
 
 *   If the first thing in a function is a character string
     that is not assigned to a variable,
-    Python attaches it to the function as the online help.
+    Python attaches it to the function as the help documentation.
 *   Called a *docstring* (short for "documentation string").
 
 ~~~
