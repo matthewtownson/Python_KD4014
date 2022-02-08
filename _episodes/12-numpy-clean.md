@@ -42,6 +42,19 @@ import numpy
 {: .callout}
 
 
+> ## Scientists Dislike Typing
+>
+> We will always use the syntax `import numpy` to import NumPy.
+> However, in order to save typing, it is
+> [often suggested](http://www.scipy.org/getting-started.html#an-example-script)
+> to make a shortcut like so: `import numpy as np`.
+> If you ever see Python code online using a NumPy function with `np`
+> (for example, `np.loadtxt(...)`), it's because they've used this shortcut.
+> When working with other people, it is important to agree on a convention of how common libraries
+> are imported.
+{: .callout}
+
+
 ## The `loadtxt` function is used to read in .csv data
 
 To load the data file we can use the expression `numpy.loadtxt(...)`. This is a [function call]({{ page.root }}/reference/#function-call)
@@ -64,6 +77,7 @@ Also note that, to save space, Python displays numbers as `1.` instead of `1.0`
 when there's nothing after the decimal point.
 
 `numpy.loadtxt` has three [arguments]({{ page.root }}/reference/#argument): the name of the file we want to read, the delimiter which separates data values in the file and the number of rows to skip when reading the file. The first row contains column names, and so we ask Numpy to skip this.
+
 
 ### What is the meaning of this data?
 
