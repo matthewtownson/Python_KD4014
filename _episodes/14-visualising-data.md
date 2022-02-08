@@ -8,11 +8,13 @@ questions:
 objectives:
 - "Plot simple graphs from data."
 keypoints:
-- "Use the `pyplot` library from `matplotlib` for creating simple visualizations."
-- "Many styles of plot are available: see the [Python Graph Gallery](https://python-graph-gallery.com/matplotlib/) for more options."
+- "Use the `pyplot` library from `matplotlib` for creating simple visualizations"
+- "Basic plots can be generated quickly with matplotlib"
+- "To group similar plots we use a figure and subplots"
+- "There are many ways to plot and customise plots using matplotlib"
 ---
 
-## Visualizing data
+## Use the `pyplot` library from `matplotlib` for creating effective visualizations
 
 The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers," and
 the best way to develop insight is often to visualize data.  Visualization deserves an entire
@@ -91,8 +93,6 @@ plt.show()
 ~~~
 
 ![](../fig/transmission_2.png)
-
-# Plotting multiple datasets on a single plot is a simple extension to this
 
 We can easily extend this to plot multiple lines. We also each line and create a legend so we can differentiate between each material.
 
