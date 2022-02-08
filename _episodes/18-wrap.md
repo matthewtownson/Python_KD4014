@@ -34,9 +34,7 @@ keypoints:
 
 ## Top Tips
 
-* Comment your code: your future self will thank you.
-
-* Use version control: your future self will thank you!
+* Document your code: your future self will thank you.
 
 * Aim for reproducibility: consider using Jupyter Notebooks as SI to papers.
 
