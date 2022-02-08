@@ -80,12 +80,13 @@ asked `matplotlib.pyplot` (which we've shortened to `plt`) to create and display
 
 At the moment the x-axis has no physical significance; it is an integer range. 
 Instead we can ask `matplotlib.pyplot` to plot a line graph of transmittance vs wavelength.
-We can also add a labelled axes.
+We can also add a labelled axes and a title.
 
 ~~~
 plt.plot(wavelengths,ITO_transmittance)
 plt.xlabel("wavelength (nm) ")
 plt.ylabel("Transmittance (%)")
+plt.title("ITO transmittance")
 plt.show()
 ~~~
 
@@ -105,6 +106,8 @@ plt.xlabel("wavelength (nm) ")
 plt.ylabel("Transmittance (%)")
 plt.show()
 ~~~
+
+![](../fig/transmission_3.png)
 
 ### To group similar plots we use a figure and subplots
 
@@ -157,7 +160,7 @@ plt.show()
 ~~~
 {: .language-python}
 
-![The Previous Plots as Subplots](../fig/01-numpy_04.png)
+![The Previous Plots as Subplots](../fig/group_transmittance.png)
 
 The [call]({{ page.root }}/reference/#function-call) to `tight_layout` improves the formatting (sub-plot placement) of the figure
 The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figure to the file `group_transmittance.png`.
