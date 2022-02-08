@@ -18,123 +18,8 @@ keypoints:
 - "Use `numpy.mean(array)`, `numpy.max(array)`, and `numpy.min(array)` to calculate simple statistics."
 - "Use `numpy.mean(array, axis=0)` or `numpy.mean(array, axis=1)` to calculate statistics across the specified axis."
 ---
-## Loading data into Python
-In order to load our inflammation data, we need to access
-([import]({{ page.root }}/reference/#import) in Python terminology) a library called
-[NumPy](http://docs.scipy.org/doc/numpy/ "NumPy Documentation").  In general you should use this
-library if you want to do fancy things with numbers, especially if you have matrices or arrays.  We
-can import NumPy using:
 
-First lets import the numpy library, and ask the library to read our cleaned data
-file for us:
 
-~~~
-import numpy
-numpy.loadtxt(fname='./data/UVVis-01-cleaned.csv')
-~~~
-{: .language-python}
-
-~~~
-array([[ 1.50000000e+03,  1.49900000e+03,  1.49800000e+03, ...,
-         2.02000000e+02,  2.01000000e+02,  2.00000000e+02],
-       [ 4.47125000e-04,  6.55591000e-04,  8.64056000e-04, ...,
-         1.00000000e+01,  1.29667747e+00,  1.66669679e+00],
-       [-3.66223800e-03, -3.49741500e-03, -3.34321500e-03, ...,
-        -1.22419536e-01, -7.07442700e-03, -1.82473719e-01],
-       ...,
-       [ 1.20771340e-02,  1.22769590e-02,  1.24000520e-02, ...,
-         3.11538220e-02,  1.53292596e-01, -2.67419547e-01],
-       [ 3.98183100e-03,  4.22229500e-03,  4.32843200e-03, ...,
-        -1.33138746e-01, -6.67433520e-02,  1.55003861e-01],
-       [ 4.21040200e-03,  4.36906300e-03,  4.38802100e-03, ...,
-         8.95578190e-02,  8.41182170e-02,  1.43565789e-01]])
-~~~
-{: .output}
-
-The expression `numpy.loadtxt(...)` is a [function call]({{ page.root }}/reference/#function-call)
-that asks Python to run the [function]({{ page.root }}/reference/#function) `loadtxt` which
-belongs to the `numpy` library. 
-
-Let's re-run
-`numpy.loadtxt` and save the returned data:
-
-~~~
-data = numpy.loadtxt(fname='./data/UVVis-01-cleaned.csv')
-~~~
-{: .language-python}
-
-Remember, this statement doesn't produce any output because we've assigned the output to the variable `data`.
-If we want to check that the data have been loaded,
-we can print the variable's value:
-
-~~~
-print(data)
-~~~
-{: .language-python}
-
-~~~
-[[ 1.50000000e+03  1.49900000e+03  1.49800000e+03 ...  2.02000000e+02
-   2.01000000e+02  2.00000000e+02]
- [ 4.47125000e-04  6.55591000e-04  8.64056000e-04 ...  1.00000000e+01
-   1.29667747e+00  1.66669679e+00]
- [-3.66223800e-03 -3.49741500e-03 -3.34321500e-03 ... -1.22419536e-01
-  -7.07442700e-03 -1.82473719e-01]
- ...
- [ 1.20771340e-02  1.22769590e-02  1.24000520e-02 ...  3.11538220e-02
-   1.53292596e-01 -2.67419547e-01]
- [ 3.98183100e-03  4.22229500e-03  4.32843200e-03 ... -1.33138746e-01
-  -6.67433520e-02  1.55003861e-01]
- [ 4.21040200e-03  4.36906300e-03  4.38802100e-03 ...  8.95578190e-02
-   8.41182170e-02  1.43565789e-01]]
-
-~~~
-{: .output}
-
-Remember that the rows are the individual samples, and the columns
-are the absorption at each wavelength.
-
-> ## Data Type
->
-> A Numpy array contains one or more elements
-> of the same type. The `type` function will only tell you that
-> a variable is a NumPy array but won't tell you the type of
-> thing inside the array.
-> We can find out the type
-> of the data contained in the NumPy array.
->
-> ~~~
-> print(data.dtype)
-> ~~~
-> {: .language-python}
->
-> ~~~
-> 'float64'
-> ~~~
-> {: .output}
->
-> This tells us that the NumPy array's elements are
-> [floating-point numbers]({{ page.root }}/reference/#floating-point number).
-{: .callout}
-
-With the following command, we can see the array's [shape]({{ page.root }}/reference/#shape):
-
-~~~
-print(data.shape)
-~~~
-{: .language-python}
-
-~~~
-(11, 1301)
-~~~
-{: .output}
-
-The output tells us that the `data` array variable contains 11 rows and 1301 columns. When we
-created the variable `data` to store our absorption data, we didn't just create the array; we also
-created information about the array, called [members]({{ page.root }}/reference/#member) or
-attributes. This extra information describes `data` in the same way an adjective describes a noun.
-`data.shape` is an attribute of `data` which describes the dimensions of `data`. We use the same
-dotted notation for the attributes of variables that we use for the functions in libraries because
-they have the same part-and-whole relationship.
 
 ## Slicing and indexing data
 
@@ -498,55 +383,12 @@ print(numpy.mean(absorption_data, axis=1))
 which is the average absorption per sample across all wavelengths.
 
 
-> ## Creating Numpy arrays
->
-> In the examples above we imported data from a file as a Numpy array. However there are other ways to create a Numpy array.
-> For example, the following code creates an array filled with zeros and then populates it with the velocity of a ball at a sequence of evenly spaced times between 0 and 10 seconds.
-> 
-> ~~~
-> import numpy
->
-> g = 9.81 # acceleration due to gravity
-> velocity_list = numpy.zeros(50)
-> v_0 = 0 # starting velocity
-> 
-> for index,time in enumerate(numpy.linspace(0,10,50)):
->        velocity_list[index] = v_0 + g*time
-> ~~~
-> {: .python}
->
-> What does `numpy.linspace` generate? What is the `enumerate` function?
-> Using the numpy `round` function, round all of the velocity values to two decimal places
->
-> > ## Solution
-> >
-> > ~~~
-> > numpy.round(velocity_list, decimals=2) 
-> > ~~~
-> {: .python}
-> {: .solution}
-{: .challenge}
 
-> ## Pandas vs Numpy
->
-> Another common Python library for handling data is the `Pandas` python package. 
-> The core object in `Pandas` is called a `dataframe`. 
-> A dataframe is two-dimensional and is designed to hold tabular data.
-> In contrast to Numpy n-dimensional arrays, the columns of a dataframe can hold different
-> types of data. For example, one column can hold strings, and another column can hold integers.
-> In which contexts might Pandas be a more useful library than Numpy (and vice-verca)?
-> > ## Solution
-> >
-> > The NumPy module works well with numerical data whilst Pandas is more suited to tabular data of different types
-> > (including strings). 
-> > NumPy provides a multi-dimensional array (a Pandas dataframe has a maximum of two dimensions).
-> > If memory is a limiting factor, NumPy typically consumes less memory than Pandas.
-> {: .solution}
-{: .challenge}
 
 
 > ## Encapsulation
 >
+> If you want to repeat the same analysis step(s) a number of times you may want to write a function.
 > Fill in the blanks to create a function that takes a single filename, containing comma separated values, as an argument,
 > loads the data in the file named by the argument,
 > and returns the minimum value in that data.
@@ -572,7 +414,7 @@ which is the average absorption per sample across all wavelengths.
 > {: .solution}
 {: .challenge}
 
-> ## Stacking Arrays
+> ## Slicing and Stacking Arrays
 >
 > Arrays can be concatenated and stacked on top of one another,
 > using NumPy's `vstack` and `hstack` functions for vertical and horizontal stacking, respectively.
