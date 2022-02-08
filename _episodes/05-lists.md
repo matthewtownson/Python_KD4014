@@ -74,6 +74,23 @@ fourth item of pressures: 0.276
 ~~~
 {: .output}
 
+## Indexing in Python is from zero
+
+Programming languages like Fortran, MATLAB and R start counting at 1
+because that's what human beings have done for thousands of years.
+Languages in the C family (including C++, Java, Perl, and Python) count from 0
+because it represents an offset from the first value in the array (the second
+value is offset by one index from the first value). This is closer to the way
+that computers represent arrays (if you are interested in the historical
+reasons behind counting indices from zero, you can read
+[Mike Hoye's blog post](http://exple.tive.org/blarg/2013/10/22/citation-needed/)).
+As a result,
+if we have a Python list with M elements,
+its indices go from 0 to M-1.
+It takes a bit of getting used to,
+but one way to remember the rule is that
+the index is how many steps we have to take from the start to get the item we want.
+
 ## Use slicing to fetch multiple items from a list.
 
 *   A part of a list is called a list slice. A list slice can be as short as a
