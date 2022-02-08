@@ -65,9 +65,11 @@ when there's nothing after the decimal point.
 
 `numpy.loadtxt` has three [arguments]({{ page.root }}/reference/#argument): the name of the file we want to read, the delimiter which separates data values in the file and the number of rows to skip when reading the file. The first row contains column names, and so we ask Numpy to skip this.
 
-This data we have read in is transmittance data from a UV-Vis experiment. 
-The rows are the data for each wavelength,
-and the columns are the data for different materials.
+### What is the meaning of this data?
+
+This data we have read in is transmittance data from a UV-Vis experiment. When light interacts with a medium some of it will be transmitted, reflected or absorbed. Transmittance is the intensity of the transmitted radiation leaving the medium, normalised by the intensity of the radiation entering the medium. As such it is usually expressed as a percentage. 
+The rows contain the data for each wavelength,
+and the columns contain the data for different materials.
 
 ## Built-in Python functions can be used to read file headings
 
