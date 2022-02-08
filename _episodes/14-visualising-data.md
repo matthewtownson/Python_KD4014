@@ -11,7 +11,9 @@ keypoints:
 - "Use the `pyplot` library from `matplotlib` for creating simple visualizations."
 - "Many styles of plot are available: see the [Python Graph Gallery](https://python-graph-gallery.com/matplotlib/) for more options."
 ---
+
 ## Visualizing data
+
 The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers," and
 the best way to develop insight is often to visualize data.  Visualization deserves an entire
 lecture of its own, but we can explore a few features of Python's `matplotlib` library here.  While
@@ -49,94 +51,64 @@ Now each time we want to use the `plot` function we can call it using `plt.plot`
 > Note that you only have to execute this function once per notebook.
 {: .callout}
 
-Let's read-in the cleaned UV-Vis data and assign the wavelengths and absorption data to variables
+First, as in earlier tutorials, let's read-in the cleaned data and assign the wavelengths and transmittance data to variables:
 
 ~~~
-data = numpy.loadtxt(fname='./data/UVVis-01-cleaned.csv')
-wavelengths = data[0,:]
-absorption_data = data[1,:]
+numpy.loadtxt("./data/transmittance_cleaned.csv")
+wavelengths = data[:,0]
+ITO_transmittance = data[:,1]
+CdS_transmittance = data[:,2]
+Si_transmittance = data[:,3]
+GaAs_transmittance = data[:,4]
 ~~~
-
-Let's take a look at the average absorption data across all wavelengths:
-
-~~~
-ave_absorption = numpy.mean(absorption_data, axis=0)
-ave_plot = plt.plot(ave_absorption)
-plt.show()
-~~~
-{: .language-python}
-
-![Average Absorption over Wavelength](../fig/01-numpy_01.png)
-
-Here, we have put the average per wavelength across all samples in the variable `ave_absorption`, then
-asked `matplotlib.pyplot` (which we've shortened to `plt`) to create and display a line graph of those values.
-
-At the moment the x-axis has no physical significance; it is an integer range from 0 to 1200. 
-Instead we can ask `matplotlib.pyplot` to plot a line graph of absorption vs wavelength with labelled axes.
-
-~~~
-ave_plot = plt.plot(wavelengths,ave_absorption)
-plt.xlabel("wavelength (nm) ")
-plt.ylabel("ave. absorption (Arb. units)")
-plt.show()
-~~~
-
-> ## Arbitary units
->
-> When labelling axes it is important to give the units of measure.
-> Sometimes we are not so interested in the absolute value of the data,
-> but in the relative values - for example, at which wavelength is absorption strongest?
-> In this case we can use "arbitrary units" to show a ratio of a quantity in relation to a 
-> pre-defined reference measurement.
 {: .callout}
 
-![Average Absorption with Labelled Axes](../fig/01-numpy_01b.png)
+# Basic plots can be generated quickly with matplotlib
 
-We are interested in analysing a sub-set of the data, from index 650 to index 800. 
-So let's take a slice of the wavelength and data arrays.
-
-~~~
-data_slice = absorption_data[:,650:800]
-wavelength_slice = wavelengths[650:800]
-~~~
-{: .language-python} 
-
-We can now plot this sub-set of the absorption data.
+Let's take a look at the transmittance data for the ITO:
 
 ~~~
-max_plot = plt.plot(wavelength_slice,numpy.mean(data_slice, axis=0))
-plt.xlabel("wavelength")
-plt.ylabel("ave. absorption")
+plt.plot(ITO_transmittance)
 plt.show()
 ~~~
 {: .language-python}
 
-![Average Value Along Slice of the First Axis](../fig/01-numpy_01c.png)
+![](../fig/transmission_1.png)
 
-Let's have a look at two other statistics:
+Here we have asked
+asked `matplotlib.pyplot` (which we've shortened to `plt`) to create and display a line graph of the ITO transmittance values.
+
+At the moment the x-axis has no physical significance; it is an integer range. 
+Instead we can ask `matplotlib.pyplot` to plot a line graph of transmittance vs wavelength.
+We can also add a labelled axes.
 
 ~~~
-max_plot = plt.plot(wavelength_slice,numpy.max(data_slice, axis=0))
-plt.xlabel("wavelength")
-plt.ylabel("max absorption")
+plt.plot(wavelengths,ITO_transmittance)
+plt.xlabel("wavelength (nm) ")
+plt.ylabel("Transmittance (%)")
 plt.show()
 ~~~
-{: .language-python}
 
-![Maximum Value Along Slice of The First Axis](../fig/01-numpy_02.png)
+![](../fig/transmission_2.png)
+
+# Plotting multiple datasets on a single plot is a simple extension to this
+
+We can easily extend this to plot multiple lines. We also each line and create a legend so we can differentiate between each material.
 
 ~~~
-min_plot = plt.plot(wavelength_slice,numpy.min(data_slice, axis=0))
-plt.xlabel("wavelength")
-plt.ylabel("min absorption")
+plt.plot(wavelengths,ITO_transmittance,label='ITO')
+plt.plot(wavelengths,CdS_transmittance,label='CdS')
+plt.plot(wavelengths,Si_transmittance,label='Si')
+plt.plot(wavelengths,GaAs_transmittance,label='GaAs')
+plt.legend()
+plt.xlabel("wavelength (nm) ")
+plt.ylabel("Transmittance (%)")
 plt.show()
 ~~~
-{: .language-python}
 
-![Minimum Value Along Slice of The First Axis](../fig/01-numpy_03.png)
+### To group similar plots we use a figure and subplots
 
-### Grouping plots
-You can group similar plots in a single figure using subplots.
+As an alternative to having multiple lines on a single plot, you can group multiple plots in a single figure using subplots.
 This script below uses a number of new commands. The function `matplotlib.pyplot.figure()`
 creates a space into which we will place all of our plots. The parameter `figsize`
 tells Python how big to make this space. Each subplot is placed into the figure using
@@ -144,42 +116,42 @@ its `add_subplot` [method]({{ page.root }}/reference/#method). The `add_subplot`
 parameters. The first denotes how many total rows of subplots there are, the second parameter
 refers to the total number of subplot columns, and the final parameter denotes which subplot
 your variable is referencing (left-to-right, top-to-bottom). Each subplot is stored in a
-different variable (`axes1`, `axes2`, `axes3`). Once a subplot is created, the axes can
+different variable (`axes1`, `axes2`, `axes3`, `axes4`). Once a subplot is created, the axes can
 be titled using the `set_xlabel()` command (or `set_ylabel()`).
-Here are our three plots side by side:
+Here are our four plots (one for each material) in a 2x2 arrangement:
 
 ~~~
 import numpy
 import matplotlib.pyplot as plt
 
-data = numpy.loadtxt(fname='./data/UVVis-01-cleaned.csv')
-wavelengths = data[0,:]
-absorption_data = data[1,:]
+fig = plt.figure(figsize=(10.0, 10.0))
 
-data_slice = absorption_data[:,650:800]
-wavelength_slice = wavelengths[650:800]
+axes1 = fig.add_subplot(2, 2, 1)
+axes2 = fig.add_subplot(2, 2, 2)
+axes3 = fig.add_subplot(2, 2, 3)
+axes4 = fig.add_subplot(2, 2, 4)
 
-fig = plt.figure(figsize=(10.0, 3.0))
+axes1.plot(wavelengths,ITO_transmittance)
+axes1.set_ylabel("Transmittance (%)")
+axes1.set_title("ITO")
 
-axes1 = fig.add_subplot(1, 3, 1)
-axes2 = fig.add_subplot(1, 3, 2)
-axes3 = fig.add_subplot(1, 3, 3)
+axes2.plot(wavelengths,CdS_transmittance)
+axes2.set_title("CdS")
+axes2.sharey(axes1)
 
-axes1.set_ylabel('average')
-axes1.set_xlabel('wavelength')
-axes1.plot(wavelength_slice,numpy.mean(data_slice, axis=0))
+axes3 .plot(wavelengths,Si_transmittance)
+axes3.set_xlabel("wavelength (nm) ")
+axes3.set_ylabel("Transmittance (%)")
+axes3.set_title("Si")
 
-axes2.set_ylabel('max')
-axes2.set_xlabel('wavelength')
-axes2.plot(wavelength_slice,numpy.max(data_slice, axis=0))
-
-axes3.set_ylabel('min')
-axes3.set_xlabel('wavelength')
-axes3.plot(wavelength_slice,numpy.min(data_slice, axis=0))
+axes4.plot(wavelengths,GaAs_transmittance)
+axes4.set_xlabel("wavelength (nm) ")
+axes4.set_title("GaAs")
+axes4.sharey(axes3)
 
 fig.tight_layout()
 
-plt.savefig('./group_plot.png')
+plt.savefig('./group_transmittance.png')
 
 plt.show()
 ~~~
@@ -187,27 +159,14 @@ plt.show()
 
 ![The Previous Plots as Subplots](../fig/01-numpy_04.png)
 
-The [call]({{ page.root }}/reference/#function-call) to `loadtxt` reads our data,
-and the rest of the program tells the plotting library
-how large we want the figure to be,
-that we're creating three subplots,
-what to draw for each one,
-and that we want a tight layout
-(If we leave out that call to `fig.tight_layout()`,
-the graphs will actually be squeezed together more closely).
-The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figure to the file `group_plot.png`.
+The [call]({{ page.root }}/reference/#function-call) to `tight_layout` improves the formatting (sub-plot placement) of the figure
+The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figure to the file `group_transmittance.png`.
 
-> ## Scientists Dislike Typing
->
-> We will always use the syntax `import numpy` to import NumPy.
-> However, in order to save typing, it is
-> [often suggested](http://www.scipy.org/getting-started.html#an-example-script)
-> to make a shortcut like so: `import numpy as np`.
-> If you ever see Python code online using a NumPy function with `np`
-> (for example, `np.loadtxt(...)`), it's because they've used this shortcut.
-> When working with other people, it is important to agree on a convention of how common libraries
-> are imported.
-{: .callout}
+# There are many ways to plot and customise plots using matplotlib
+
+We are only touching the surface of plotting with matplotlib.
+There are hundreds of different plots, and thousands of ways to customise your plot.
+A good starting point for exploring the options is by looking online: The [official matplotlib gallery](https://matplotlib.org/2.0.2/gallery.html) and the [Python graph gallery](https://www.python-graph-gallery.com/matplotlib/) have lots of code examples.
 
 > ## Line fitting
 >
@@ -354,57 +313,24 @@ The [call]({{ page.root }}/reference/#function-call) to `savefig` saves our figu
 {: .challenge}
 
 
-> ## Make Your Own Plot
->
-> Create a plot showing the standard deviation (`numpy.std`)
-> of the absorption data for each day across all patients.
->
-> > ## Solution
-> > ~~~
-> > import numpy
-> > import matplotlib.pyplot as plt
-> >
-> > std_plot = plt.plot(numpy.std(data, axis=0))
-> > plt.show()
-> > ~~~
-> > {: .language-python}
-> {: .solution}
-{: .challenge}
-
 > ## Moving Plots Around
 >
-> Modify the program to display the three plots on top of one another
-> instead of side by side.
+> Modify the program to display the four plots next to each other
+> instead of in a 2x2 arrangement.
 >
 > > ## Solution
+> > You need to adjust the following code:
 > > ~~~
 > > import numpy
 > > import matplotlib.pyplot as plt
-> >
-> > data = numpy.loadtxt(fname='./data/UVVis-01-cleaned.csv')
-> > wavelengths = data[0,:]
-> > absorption_data = data[1,:]
-> >
-> > # change figsize (swap width and height)
-> > fig = plt.figure(figsize=(3.0, 10.0))
-> >
-> > # change add_subplot (swap first two parameters)
-> > axes1 = fig.add_subplot(3, 1, 1)
-> > axes2 = fig.add_subplot(3, 1, 2)
-> > axes3 = fig.add_subplot(3, 1, 3)
-> >
-> > axes1.set_ylabel('average')
-> > axes1.plot(numpy.mean(absorption_data, axis=0))
-> >
-> > axes2.set_ylabel('max')
-> > axes2.plot(numpy.max(absorption_data, axis=0))
-> >
-> > axes3.set_ylabel('min')
-> > axes3.plot(numpy.min(absorption_data, axis=0))
-> >
-> > fig.tight_layout()
-> >
-> > plt.show()
+> > 
+> > fig = plt.figure(figsize=(20.0, 5.0))
+> > 
+> > axes1 = fig.add_subplot(1, 4, 1)
+> > axes1 = fig.add_subplot(1, 4, 2)
+> > axes1 = fig.add_subplot(1, 4, 3)
+> > axes1 = fig.add_subplot(1, 4, 4)
+> > 
 > > ~~~
 > > {: .language-python}
 > {: .solution}
