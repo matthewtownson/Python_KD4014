@@ -37,9 +37,10 @@ import numpy
 >
 > Another common Python package for working with 2-dimensional tabular data is Pandas.
 > If you have heterogeneous data - columns with different data-types (strings and floats for example) - Pandas might be a good choice.
-> If you are applying mathematical operations to multi-dimensional arrays, Numpy is a good choice.
+> If you are applying mathematical operations to multi-dimensional arrays, Numpy is a good choice. NumPy typically consumes less memory than Pandas, but this only becomes noticeable for very large arrays.
 > For this relatively small 2-dimensional table of floats, either will work well.
 {: .callout}
+
 
 ## The `loadtxt` function is used to read in .csv data
 
@@ -220,3 +221,34 @@ Note that Numpy has inserted a `%` at the start of the header line to indicate t
 numpy.loadtxt("./data/transmittance.csv")
 ~~~
 {: .language-python}
+
+> ## Creating Numpy arrays
+>
+> In the example above we imported data from a file as a Numpy array. However there are other ways to create a Numpy array.
+> For example, the following code creates an array filled with zeros and then populates it with the velocity of a ball at a sequence of evenly spaced times between 0 and 10 seconds.
+> 
+> ~~~
+> import numpy
+>
+> g = 9.81 # acceleration due to gravity
+> velocity_list = numpy.zeros(50)
+> v_0 = 0 # starting velocity
+> 
+> for index,time in enumerate(numpy.linspace(0,10,50)):
+>        velocity_list[index] = v_0 + g*time
+> ~~~
+> {: .python}
+>
+> What does `numpy.linspace` generate? What is the `enumerate` function?
+> Using the numpy `round` function, round all of the velocity values to two decimal places
+>
+> > ## Solution
+> >
+> > ~~~
+> > numpy.round(velocity_list, decimals=2) 
+> > ~~~
+> {: .python}
+> {: .solution}
+{: .challenge}
+
+
