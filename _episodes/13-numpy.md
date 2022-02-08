@@ -19,7 +19,13 @@ keypoints:
 - "Use `numpy.mean(array, axis=0)` or `numpy.mean(array, axis=1)` to calculate statistics across the specified axis."
 ---
 
+![Schematic for transmittance spectroscopy](../fig/trasmittance_schematic.png)
 
+The schematic above is taken from the Lab script for course KD5081 at Northumbria University.
+
+![Schematic for transmittance spectroscopy](../fig/trasmittance_schematic.png)
+
+The schematic above is taken from the Lab script for course KD5081 at Northumbria University.
 
 ## Slicing and indexing data
 
