@@ -151,6 +151,17 @@ An array is a central data structure of the NumPy library.
 columns of potentially different types. An array is a grid of values that can be indexed in various ways.
 The elements are all of the same type, referred to as the array dtype.
 
+> ## Arrays vs lists
+>
+> You may wonder why we care about Numpy arrays, when we already have Python lists.
+> A NumPy array holds on a single type of data, whilst lists can hold elements of different types.
+> This makes NumPy more efficient in memory usage.
+> It also makes it quicker to iterate through a NumPy array and manipulate elements in the array.
+> Arrays are more suited to mathematical tasks as the operations are element-by-element. 
+> For example, what happens when we multiply a list by a integer? 
+> Is this what we would expect to see when working with vectors?
+{: .callout}
+
 The `type` function tells us that
 a variable is a NumPy array but won't tell you the type of
 thing inside the array.
