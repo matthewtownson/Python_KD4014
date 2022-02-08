@@ -19,132 +19,53 @@ keypoints:
 - "Use `numpy.mean(array, axis=0)` or `numpy.mean(array, axis=1)` to calculate statistics across the specified axis."
 ---
 
+In earlier tutorials we have read-in and plotted our raw transmittance spectroscopy data. 
+In this tutorial we will analyse this data to calculate the band gap of each material.
+We will also use Numpy array operations to calculate the reflectance of each material.
+
+### Digging a little deeper into transmittance spectroscopy
+
 ![Schematic for transmittance spectroscopy](../fig/trasmittance_schematic.png)
 
 The schematic above is taken from the Lab script for course KD5081 at Northumbria University.
 
-![Schematic for transmittance spectroscopy](../fig/trasmittance_schematic.png)
+The optical transmittance spectrum of a semiconductor yields information on the energy band structure of the semiconductor. In particular if the frequency of the radiation $\nu$ is such that $E_g<h\nu$ where $E_g$ is the energy bandgap of the semiconductor then each photon absorbed creates an electron-hole pair and there is weak transmittance. If however $E_g>h\nu$ then the electron-hole pair cannot be generated and there is usually strong transmittance in this region. Thus by measuring the position of the transmittance edge, one can determine the energy bandgap of the material using the equation
+$$ E_g = h\nu = \frac{hc}{\lambda_0} $$
 
-The schematic above is taken from the Lab script for course KD5081 at Northumbria University.
+It is, however, often difficult to locate the absorption edge precisely as it may be “smeared out” over a wide wavelength range. A simple criterion that suffices in this case is to take the point which is obtained by extrapolating the transmission curves. This requires a straight line fitting to the data, which will be our first analysis task.
 
-## Slicing and indexing data
+## Fit a polynomial function to data using the `numpy.polyfit` function
 
-The first row of the data contains the wavelengths. We can select this section of the data array  and assign it to a variable `wavelengths` using the following command:
+First we will slice our ITO transmittance data to find the linear region
 
-~~~
-wavelengths = data[0,0:1302]
-~~~
-{: .language-python}
+We can fit a polynomial to data using the `numpy.polyfit` function. This uses the least-squares method to perform the fitting. In this case, we know that is is a first order polynomial (straight line).
 
 ~~~
-print(wavelengths)
-~~~
-{: .language-python}
-
-~~~
-[1500. 1499. 1498. ...  202.  201.  200.]
-~~~
-{: .output}
-
-We have to specify two indices/slices (separated by a comma) as this is a two dimensional array (with rows and columns). The first index 0 selects the first row only. The [slice]({{ page.root }}/reference/#slice) `0:1302` means "Start at index 0 and go up to but not including index 1302". As there are 1301 elements in each row, this slice is equivalent to selecting every element in that row.
-
-However we do not need to select and upper and lower bound for this slice. If we don't include the lower
-bound, Python uses 0 by default; if we don't include the upper, the slice runs to the end of the
-axis, and if we don't include either (i.e., if we just use ':' on its own), the slice includes
-everything. 
-
-This makes `data[0,0:1302]` exactly equal to `data[0,:]` for this example.
-
-All other rows contains the absorption data. We can select this section of the data array and assign it to a variable `absorption_data` using the following similar command:
-
-~~~
-absorption_data = data[1:,:]
+fit = numpy.polyfit(numpy.linspace(0,10,50), velocity_list, 1)
+print(fit)
 ~~~
 {: .language-python}
+ 
+The first returned value, the second returned value
 
-~~~
-print(absorption_data)
-~~~
-{: .language-python}
+To overlay this straight line on our transmittance data we can use the `numpy.polyval` function and the matplotlib library.
 
-~~~
-[[ 4.47125000e-04  6.55591000e-04  8.64056000e-04 ...  1.00000000e+01
-   1.29667747e+00  1.66669679e+00]
- [-3.66223800e-03 -3.49741500e-03 -3.34321500e-03 ... -1.22419536e-01
-  -7.07442700e-03 -1.82473719e-01]
- [ 2.23267300e-03  2.29731000e-03  2.47505900e-03 ...  3.31975669e-01
-   3.77199233e-01  3.53418890e-02]
- ...
- [ 1.20771340e-02  1.22769590e-02  1.24000520e-02 ...  3.11538220e-02
-   1.53292596e-01 -2.67419547e-01]
- [ 3.98183100e-03  4.22229500e-03  4.32843200e-03 ... -1.33138746e-01
-  -6.67433520e-02  1.55003861e-01]
- [ 4.21040200e-03  4.36906300e-03  4.38802100e-03 ...  8.95578190e-02
-   8.41182170e-02  1.43565789e-01]]
+Use the polyval function to generate and plot velocities over the timeframe 30 to 100 seconds.
+> 
+> > ## Solution
+> > ~~~
+> > import matplotlib.pyplot as plt
+> >
+> > time_range = numpy.linspace(30,100,70)
+> > plt.plot(time_range,np.polyval(fit,time_range))
+> > plt.xlabel("Time (s)")
+> > plt.ylabel("Velocity (m/s)")
+> > plt.title("Velocity of an object accelerated by gravity")
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+{: .challenge}
 
-~~~
-{: .output}
-
-The first slice `1:` means "start at index (row) 1 and go to the end of the array" . The second [slice]({{ page.root }}/reference/#slice) `:` means, "start at index (column) 0 and go to the end of the array" or "select all elements in the row".
-
-If we want to get a single number from the array, we must provide an
-[index]({{ page.root }}/reference/#index) in square brackets after the variable name, just as we
-do in math when referring to an element of a matrix.  Our absorption data has two dimensions, so
-we will need to use two indices to refer to one specific value:
-
-~~~
-print('first value in data:', absorption_data[0, 0])
-~~~
-{: .language-python}
-
-~~~
-first value in data: 0.000447125
-~~~
-{: .output}
-
-~~~
-print('middle value in data:', absorption_data[5, 600])
-~~~
-{: .language-python}
-
-~~~
-middle value in data: 0.05236074
-~~~
-{: .output}
-
-## Indexing from zero
-
-The expression `data[5, 600]` accesses the element at row 5, column 600. While this expression may
-not surprise you,
- `data[0, 0]` might.
-Programming languages like Fortran, MATLAB and R start counting at 1
-because that's what human beings have done for thousands of years.
-Languages in the C family (including C++, Java, Perl, and Python) count from 0
-because it represents an offset from the first value in the array (the second
-value is offset by one index from the first value). This is closer to the way
-that computers represent arrays (if you are interested in the historical
-reasons behind counting indices from zero, you can read
-[Mike Hoye's blog post](http://exple.tive.org/blarg/2013/10/22/citation-needed/)).
-As a result,
-if we have an M×N array in Python,
-its indices go from 0 to M-1 on the first axis
-and 0 to N-1 on the second.
-It takes a bit of getting used to,
-but one way to remember the rule is that
-the index is how many steps we have to take from the start to get the item we want.
-
-![Zero Index](../fig/python-zero-index.png)
-
-> ## In the Corner
->
-> What may also surprise you is that when Python displays an array,
-> it shows the element with index `[0, 0]` in the upper left corner
-> rather than the lower left.
-> This is consistent with the way mathematicians draw matrices
-> but different from the Cartesian coordinates.
-> The indices are (row, column) instead of (column, row) for the same reason,
-> which can be confusing when plotting data.
-{: .callout}
 
 ## Numpy array operations
 
@@ -390,7 +311,53 @@ which is the average absorption per sample across all wavelengths.
 
 
 
-
+> ## Error bars and exponential growth
+> 
+> This question is partly modelled on the a [blog post](https://towardsdatascience.com/modeling-exponential-growth-49a2b6f22e1f). There is also a nice
+> [3Blue1Brown video on exponential growth in the context of Covid](https://www.youtube.com/watch?v=Kas0tIxDvrg).
+> 
+> We have the following (hypothetical) data for the growth in Covid cases at a university over a two-week period
+> ~~~
+> import numpy as np
+> day = np.arange(0,15)
+> case_numbers = np.array([3,4,8,15,32,65,128,253,512,1025,2049,4090,8191,16387])
+> ~~~
+> {: .language-python}
+> 
+> An administrator realises that some test results may have been filed a day late or a day early. This makes the error bar on the case numbers +/- 200.
+> Using the `matplotlib.pyplot.errorbar` function with the `yerr` keyword argument plot the case number data with error bars. Label your axes and title the plot.
+> 
+> > ## Solution
+> > ~~~
+> > import matplotlib.pyplot as plt
+> > 
+> > plt.errorbar(day,case_numbers,yerr=200)
+> > plt.xlabel("Time (days)")
+> > plt.ylabel("Case numbers")
+> > plt.title("Covid case numbers over time")
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+> 
+> By taking a logarithm of the data, fit a straight line to the case number data and predict the exponential growth factor. 
+> 
+> > ## Solution
+> > From scanning the blog post we can see that the growth factor is the base of the exponential.
+> > Assuming the growth is exponential, to generate a straight-(ish) line we first need to take a logarithm of the case values data.
+> > We can then fit a straight line to this to calculate the logarithm of the growth factor. 
+> > ~~~
+> > log_growth_factor, log_starting_case_number = np.polyfit(day,np.log(case_numbers),1)
+> > growth_factor = np.exp(log_growth_factor)
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+> 
+> From inspecting the data, does the calculated growth factor make sense? 
+> 
+> > ## Solution
+> > The data roughly doubles each day. The calculated growth factor is 1.94, which is reassuringly close to 2. 
+> {: .solution}
+{: .challenge}
 
 > ## Encapsulation
 >
@@ -402,9 +369,9 @@ which is the average absorption per sample across all wavelengths.
 > ~~~
 > import numpy
 >
-> def min_in_data(____):
->     data = ____
->     return ____
+> def min_in_data(....):
+>     data = ....
+>     return ....
 > ~~~
 > {: .python}
 > > ## Solution
@@ -420,94 +387,4 @@ which is the average absorption per sample across all wavelengths.
 > {: .solution}
 {: .challenge}
 
-> ## Slicing and Stacking Arrays
->
-> Arrays can be concatenated and stacked on top of one another,
-> using NumPy's `vstack` and `hstack` functions for vertical and horizontal stacking, respectively.
->
-> ~~~
-> import numpy
->
-> A = numpy.array([[1,2,3], [4,5,6], [7, 8, 9]])
-> print('A = ')
-> print(A)
->
-> B = numpy.hstack([A, A])
-> print('B = ')
-> print(B)
->
-> C = numpy.vstack([A, A])
-> print('C = ')
-> print(C)
-> ~~~
-> {: .language-python}
->
-> ~~~
-> A =
-> [[1 2 3]
->  [4 5 6]
->  [7 8 9]]
-> B =
-> [[1 2 3 1 2 3]
->  [4 5 6 4 5 6]
->  [7 8 9 7 8 9]]
-> C =
-> [[1 2 3]
->  [4 5 6]
->  [7 8 9]
->  [1 2 3]
->  [4 5 6]
->  [7 8 9]]
-> ~~~
-> {: .output}
->
-> Write some additional code that slices the first and last columns of `A`,
-> and stacks them into a 3x2 array.
-> Make sure to `print` the results to verify your solution.
->
-> > ## Solution
-> >
-> > A 'gotcha' with array indexing is that singleton dimensions
-> > are dropped by default. That means `A[:, 0]` is a one dimensional
-> > array, which won't stack as desired. To preserve singleton dimensions,
-> > the index itself can be a slice or array. For example, `A[:, :1]` returns
-> > a two dimensional array with one singleton dimension (i.e. a column
-> > vector).
-> >
-> > ~~~
-> > D = numpy.hstack((A[:, :1], A[:, -1:]))
-> > print('D = ')
-> > print(D)
-> > ~~~
-> > {: .language-python}
-> >
-> > ~~~
-> > D =
-> > [[1 3]
-> >  [4 6]
-> >  [7 9]]
-> > ~~~
-> > {: .output}
-> {: .solution}
->
-> > ## Solution
-> >
-> > An alternative way to achieve the same result is to use Numpy's
-> > delete function to remove the second column of A.
-> >
-> > ~~~
-> > D = numpy.delete(A, 1, 1)
-> > print('D = ')
-> > print(D)
-> > ~~~
-> > {: .language-python}
-> >
-> > ~~~
-> > D =
-> > [[1 3]
-> >  [4 6]
-> >  [7 9]]
-> > ~~~
-> > {: .output}
-> {: .solution}
-{: .challenge}
+
