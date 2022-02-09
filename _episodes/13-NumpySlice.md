@@ -1,5 +1,5 @@
 ---
-title: "Indexing and Slicing NumPy Arrays"
+title: "Selecting data from Numpy arrays"
 teaching: 15
 exercises: 15
 questions:
