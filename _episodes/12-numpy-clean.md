@@ -257,12 +257,13 @@ numpy.loadtxt("./data/transmittance.csv")
 > ~~~
 > import numpy
 >
-> g = 9.81 # acceleration due to gravity
-> velocity_list = numpy.zeros(50)
-> v_0 = 0 # starting velocity
+> g = 9.81 # acceleration due to gravity in m/s^2
+> v_0 = 0 # starting velocity in m/s
+> times = numpy.linspace(0,10,50) # times between 0 and 10s
+> velocity_array = numpy.zeros(50) # empty array to hold calculated values
 > 
-> for index,time in enumerate(numpy.linspace(0,10,50)):
->        velocity_list[index] = v_0 + g*time
+> for index,time in enumerate(times): 
+>        velocity_array[index] = v_0 + g*time
 > ~~~
 > {: .python}
 >
@@ -271,10 +272,50 @@ numpy.loadtxt("./data/transmittance.csv")
 >
 > > ## Solution
 > >
+> > From the Python documentation, we see that `numpy.linspace` generates evenly spaced numbers over a given interval.
+> > In this case, it generates 50 numbers between 0 to 10 (inclusive).
+> > Enumerate is a Python built-in function. It allows us to loop over something and have an automatic counter. The best way to understand it is to see it in 
+> > action:
+> > 
+> > ~~~
+> > for index, value in enumerate([10,20,30]):
+> >   print("index is: ", index)
+> >   print("value is: ", value)
+> > ~~~
+> > {: .python}
+> > 
+> > ~~~
+> > index is: 0
+> > value is: 10
+> > index is: 1
+> > value is: 20
+> > index is: 2
+> > value is: 30
+> > ~~~
+> > {: .output}
+> > 
 > > ~~~
 > > numpy.round(velocity_list, decimals=2) 
 > > ~~~
-> {: .python}
+> > {: .python}
+> {: .solution}
+>
+> Now create a two-dimensional velocity array with 4 rows (each corresponding to a different v_0 value: -10,0,10,20 m/s) and 50 columns 
+> (each corresponding to a different point in time between 0 and 10s). Use two nested for loops to iterate through and populate the velocity array
+> 
+> > ~~~
+> > import numpy
+> >
+> g = 9.81 # acceleration due to gravity in m/s^2
+> v_0_array = numpy.array([-10,0,10,20]) # starting velocities in m/s
+> times = numpy.linspace(0,10,50) # times between 0 and 10s
+> velocity_array = numpy.zeros((4,50)) # empty array to hold calculated values
+>
+> for i, v_0 in enumerate(v_0_array):
+>   for j,time in enumerate(times): 
+>        velocity_array[i,j] = v_0 + g*time
+> ~~~
+> > {: .python}
 > {: .solution}
 {: .challenge}
 
