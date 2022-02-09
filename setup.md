@@ -41,7 +41,7 @@ in advance of the workshop.
 ## Getting the Data
 
 To obtain the data we will be using, download the file 
-[UVVis-01.csv]({{page.root}}/data/UVVis-01.csv).
+[transmittance.csv]({{page.root}}/data/transmittance.csv).
 
 ## Starting Python
 
