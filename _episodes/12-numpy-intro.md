@@ -1,14 +1,16 @@
 ---
-title: "Reading in data with Numpy"
+title: "Numpy arrays for storing data"
 teaching: 15
 exercises: 15
 questions:
+- "What is a Numpy array and when is it useful?"
 - "How can I import and clean data in Python?"
 objectives:
 - "Read tabular data from a file into a program using `NumPy`"
 - "Describe the key features and use-cases of a Numpy n-dimensional array"
 - "Clean data for easier file parsing"
 - "Save data to a file"
+- "Iterate through 1d and 2d Numpy arrays"
 keypoints:
 - "Use the `NumPy` library to work with numerical data in Python"
 - "The `loadtxt` function is used to read in .csv data"
