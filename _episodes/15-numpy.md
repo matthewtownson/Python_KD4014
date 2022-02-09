@@ -20,7 +20,7 @@ keypoints:
 ---
 
 In earlier tutorials we have read-in and plotted our raw transmittance spectroscopy data. 
-In this tutorial we will analyse this data to calculate the band gap of each material.
+In this tutorial we will analyse this data to calculate the band gap of each material. For our analysis we will make use of a number of functions in the Numpy library: `numpy.polyfit`, `numpy.polyval` and `numpy.roots`.
 We will also use Numpy array operations to calculate the reflectance of each material.
 
 ### Digging a little deeper into transmittance spectroscopy
@@ -34,38 +34,71 @@ $$ E_g = h\nu = \frac{hc}{\lambda_0} $$
 
 It is, however, often difficult to locate the absorption edge precisely as it may be “smeared out” over a wide wavelength range. A simple criterion that suffices in this case is to take the point which is obtained by extrapolating the transmission curves. This requires a straight line fitting to the data, which will be our first analysis task.
 
-## Fit a polynomial function to data using the `numpy.polyfit` function
-
-First we will slice our ITO transmittance data to find the linear region
-
-We can fit a polynomial to data using the `numpy.polyfit` function. This uses the least-squares method to perform the fitting. In this case, we know that is is a first order polynomial (straight line).
+First we will slice our ITO transmittance data and visualise it to find the linear region. For example, the following slice generates a region that looks roughly linear.
 
 ~~~
-fit = numpy.polyfit(numpy.linspace(0,10,50), velocity_list, 1)
+plt.plot(wavelengths[50:111],ITO_transmittance[50:111],label='ITO')
+~~~
+{: .language-python}
+
+![](./fig/analysis_1.png)
+
+We have done this manually, and "by eye", but there are ways  - beyond the scope of this course - to automate this process and reduce role of human judgement. For example, see [this answer](https://stackoverflow.com/a/13728059) on the very useful site Stack Overflow.
+
+## Fit a polynomial function to data using the `numpy.polyfit` function
+
+We can fit a polynomial to this data slice using the `numpy.polyfit` function. This function uses a [least-squares method](https://www.youtube.com/watch?v=P8hT5nDai6A) to perform the fitting. In this case, we know that is is a first order polynomial (straight line) - but note that least squares methods (and the polyfit function) can be used to fit higher order polynomials.
+
+~~~
+fit=numpy.polyfit(wavelengths[50:111],ITO_transmittance[50:111], 1)
 print(fit)
 ~~~
 {: .language-python}
+
+~~~
+array([   0.79366912, -275.85006769])
+~~~
+{: .output}
  
-The first returned value, the second returned value
+The `polyfit` function returns two values. From the function documentation (`numpy.polyfit?`) we can see that these are the polynomial coefficients with the highest power returned first. As this is a linear fit, the first value is the gradient of the line and the second value is the intercept on the x-axis.
 
-To overlay this straight line on our transmittance data we can use the `numpy.polyval` function and the matplotlib library.
+We can overlay the fit on our dataset to verify that our fit is sensible. To do this we first evaluate this fit using the `numpy.polyval` function for a number of points along the x-axis.
 
-Use the polyval function to generate and plot velocities over the timeframe 30 to 100 seconds.
-> 
-> > ## Solution
-> > ~~~
-> > import matplotlib.pyplot as plt
-> >
-> > time_range = numpy.linspace(30,100,70)
-> > plt.plot(time_range,np.polyval(fit,time_range))
-> > plt.xlabel("Time (s)")
-> > plt.ylabel("Velocity (m/s)")
-> > plt.title("Velocity of an object accelerated by gravity")
-> > ~~~
-> > {: .language-python}
-> {: .solution}
-{: .challenge}
+~~~
+fit_val = numpy.polyval(fit,np.linspace(350,410,1000)))
+~~~
+{: .language-python}
 
+~~~
+array([-6.00256795e+00, -5.94695550e+00, -5.89134305e+00, ...
+~~~
+{: .output}
+
+This generates an array of y values.
+
+We then plot the experimental data and our fit alongside each other. As there are now multiple plot lines we also include a legend.
+
+~~~
+plt.plot(wavelengths,ITO_transmittance,label='experimental data')
+plt.plot(np.linspace(340,410,1000),fit_val,label='least squares fit')
+plt.legend()
+plt.title("ITO transmittance")
+~~~
+{: .language-python}
+
+![](./fig/analysis_2.png)
+
+This looks sensible! To calculate the band gap energy of our material we need to calculate the point at which the fit intercepts with the x-axis. As our fit is linear, this point corresponds to the one and only root of our polynomial equation. To find the root(s) of a polynomial equation we can use the `numpy.roots` function.
+
+~~~
+numpy.roots(fit)
+~~~
+{: .language-python}
+
+~~~
+array([347.56306101])
+~~~
+{: .output}
 
 ## Numpy array operations
 
