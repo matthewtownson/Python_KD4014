@@ -34,41 +34,48 @@ To convert the code in your Jupyter Notebook cell into a plain text `.py` file t
 Let's use option two.
 
 ~~~
-%%writefile absorption_plots.py
+%%writefile transmittance_plots.py
 
 import numpy
-import matplotlib.pyplot
+import matplotlib.pyplot as plt
 
-data = numpy.loadtxt(fname='./data/UVVis-01-cleaned.csv')
-wavelengths = data[0,:]
-absorption_data = data[1,:]
+numpy.loadtxt("./data/transmittance_cleaned.csv")
+wavelengths = data[:,0]
+ITO_transmittance = data[:,1]
+CdS_transmittance = data[:,2]
+Si_transmittance = data[:,3]
+GaAs_transmittance = data[:,4]
 
-data_slice = absorption_data[:,650:800]
-wavelength_slice = wavelengths[650:800]
+fig = plt.figure(figsize=(10.0, 10.0))
 
-fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+axes1 = fig.add_subplot(2, 2, 1)
+axes2 = fig.add_subplot(2, 2, 2)
+axes3 = fig.add_subplot(2, 2, 3)
+axes4 = fig.add_subplot(2, 2, 4)
 
-axes1 = fig.add_subplot(1, 3, 1)
-axes2 = fig.add_subplot(1, 3, 2)
-axes3 = fig.add_subplot(1, 3, 3)
+axes1.plot(wavelengths,ITO_transmittance)
+axes1.set_ylabel("Transmittance (%)")
+axes1.set_title("ITO")
 
-axes1.set_ylabel('average')
-axes1.set_xlabel('wavelength')
-axes1.plot(wavelength_slice,numpy.mean(data_slice, axis=0))
+axes2.plot(wavelengths,CdS_transmittance)
+axes2.set_title("CdS")
+axes2.sharey(axes1)
 
-axes2.set_ylabel('max')
-axes2.set_xlabel('wavelength')
-axes2.plot(wavelength_slice,numpy.max(data_slice, axis=0))
+axes3 .plot(wavelengths,Si_transmittance)
+axes3.set_xlabel("wavelength (nm) ")
+axes3.set_ylabel("Transmittance (%)")
+axes3.set_title("Si")
 
-axes3.set_ylabel('min')
-axes3.set_xlabel('wavelength')
-axes3.plot(wavelength_slice,numpy.min(data_slice, axis=0))
+axes4.plot(wavelengths,GaAs_transmittance)
+axes4.set_xlabel("wavelength (nm) ")
+axes4.set_title("GaAs")
+axes4.sharey(axes3)
 
 fig.tight_layout()
 
-matplotlib.pyplot.savefig('./group_plot.png')
+plt.savefig('./group_transmittance.png')
 
-matplotlib.pyplot.show()
+plt.show()
 ~~~
 {: .language-python}
 
@@ -88,53 +95,63 @@ matplotlib.pyplot.show()
 > 
 {: .callout}
 
-We can now run the script in a terminal to generate the plot. Note that the cleaned and un-cleaned data files will need to be in the same folder as your python script.
+We can now run the script in a terminal to generate the plot. Note that the transmittance data file will need to be in a  sub-folder called `data`.
 
 ~~~
-python3 absorption_plots.py
+python3 transmittance_plots.py
 ~~~
 {: .language-bash}
 
-The data files that are read in by the script are currently hard coded - they cannot be changed without changing the code itself. Instead, we can import the `sys` library which allows us to provide command line arguments specifying the filenames for our data. The first command line argument is accessed with the variable `sys.argv[1]` , the second command line argument is accessed with the `sys.argv[2]` argument and so on. We can adapt the `absorption_plots.py` script as follows:
+The data file that is read in by the script are currently hard coded - they cannot be changed without changing the code itself. Instead, we can import the `sys` library which allows us to provide command line arguments specifying the filenames for our data. The first command line argument is accessed with the variable `sys.argv[1]` , the second command line argument is accessed with the `sys.argv[2]` argument and so on. We can adapt the `transmittance_plots.py` script as follows:
 
 ~~~
 import sys
 import numpy
-import matplotlib.pyplot
+import matplotlib.pyplot as plt
 
-data = numpy.loadtxt(fname='./data/UVVis-01-cleaned.csv')
-wavelengths = data[0,:]
-absorption_data = data[1,:]
+numpy.loadtxt(sys.argv[1])
+wavelengths = data[:,0]
+ITO_transmittance = data[:,1]
+CdS_transmittance = data[:,2]
+Si_transmittance = data[:,3]
+GaAs_transmittance = data[:,4]
 
-data_slice = absorption_data[:,650:800]
-wavelength_slice = wavelengths[650:800]
+fig = plt.figure(figsize=(10.0, 10.0))
 
-fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+axes1 = fig.add_subplot(2, 2, 1)
+axes2 = fig.add_subplot(2, 2, 2)
+axes3 = fig.add_subplot(2, 2, 3)
+axes4 = fig.add_subplot(2, 2, 4)
 
-axes1 = fig.add_subplot(1, 3, 1)
-axes2 = fig.add_subplot(1, 3, 2)
-axes3 = fig.add_subplot(1, 3, 3)
+axes1.plot(wavelengths,ITO_transmittance)
+axes1.set_ylabel("Transmittance (%)")
+axes1.set_title("ITO")
 
-axes1.set_ylabel('average')
-axes1.plot(wavelength_slice,numpy.mean(data_slice, axis=0))
+axes2.plot(wavelengths,CdS_transmittance)
+axes2.set_title("CdS")
+axes2.sharey(axes1)
 
-axes2.set_ylabel('max')
-axes2.plot(wavelength_slice,numpy.max(data_slice, axis=0))
+axes3 .plot(wavelengths,Si_transmittance)
+axes3.set_xlabel("wavelength (nm) ")
+axes3.set_ylabel("Transmittance (%)")
+axes3.set_title("Si")
 
-axes3.set_ylabel('min')
-axes3.plot(wavelength_slice,numpy.min(data_slice, axis=0))
+axes4.plot(wavelengths,GaAs_transmittance)
+axes4.set_xlabel("wavelength (nm) ")
+axes4.set_title("GaAs")
+axes4.sharey(axes3)
 
 fig.tight_layout()
 
-matplotlib.pyplot.savefig('./group_plot.png')
+plt.savefig(sys.argv[2])
 
-matplotlib.pyplot.show()
+plt.show()
 ~~~
 {: .language-python}
 
-In this example `sys.argv[1]` should correspond to the cleaned data file, and `sys.argv[2]` should correspond to the original data file. 
+In this example `sys.argv[1]` should correspond to the cleaned data file, and `sys.argv[2]` should correspond to the name you would like to give the resulting plot. 
 
 ~~~
-python3 absorption_plots.py ./data/UVVis-01-cleaned.csv ./data/UVVis-01.csv
+python3 absorption_plots.py ./data/transmittance_cleaned.csv ./transmittance_plot_scr.png
 ~~~
 {: .language-bash}
