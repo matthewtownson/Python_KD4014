@@ -3,19 +3,21 @@ title: "Analysing data with NumPy"
 teaching: 15
 exercises: 15
 questions:
-- "How can I import and analyse tabular data files in Python?"
+- "How can I analyse data using Numpy?"
+- "How can I fit a polynomial function to data?"
+- "How can I apply mathematical operations to my data?"
 objectives:
-- "Read tabular data from a file into a program using `numpy`."
-- "Select individual values and subsections from data."
-- "Perform operations on arrays of data."
+- "Fit a first order polynomial to data"
+- "Access physical constants from the scipy library"
+- "Apply mathematical and statistical operations across 1d and 2d arrays"
 keypoints:
 - "There are often multiple ways to approach a programming task"
 - "Fit a polynomial function to data using the `numpy.polyfit` function"
 - "Use the scipy.constants module for physical constants"
-- Numpy simplifies and speeds up array operations
-There are Numpy functions for statistical analysis
-- "Use `numpy.mean(array)`, `numpy.max(array)`, and `numpy.min(array)` to calculate simple statistics."
-- "Use `numpy.mean(array, axis=0)` or `numpy.mean(array, axis=1)` to calculate statistics across the specified axis."
+- "Numpy simplifies and speeds up array operations"
+- "There are Numpy functions for statistical analysis"
+- "Numpy functions can be applied across an axis"
+
 ---
 
 In earlier tutorials we have read-in and plotted our raw transmittance spectroscopy data. 
