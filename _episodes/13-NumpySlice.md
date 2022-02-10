@@ -8,24 +8,20 @@ objectives:
 - "Index a two-dimensional NumPy array."
 - "Select columns from a two-dimensional NumPy array."
 keypoints:
-- "To select single values from an array we need to provide an index for each axis"
-- "To select a column we can use a slice to select all rows"
-- "Use `array[x, y]` to select a single element from a 2D array."
-- "Array indices start at 0, not 1."
 - "All the indexing and slicing that we've used on lists and strings also works on arrays."
-- "Use `low:high` to specify a `slice` that includes indices from `low` to `high-1`."
-- "Use `numpy.mean(array)`, `numpy.max(array)`, and `numpy.min(array)` to calculate simple statistics."
-- "Use `numpy.mean(array, axis=0)` or `numpy.mean(array, axis=1)` to calculate statistics across the specified axis."
+- "Use `array[x, y]` to select a single element from a 2D array"
+- "Use `data[:,x]` to select a column"
 ---
 
+## All the indexing and slicing that we've used on lists and strings also works on arrays.
 
 In an earlier tutorial we have seen how to slice and index a one-dimensional Python list. 
 Selecting data from our a multi-dimensional NumPy array is similar, but now we must provide indices or slices for each axis.
 
-## To select single values from an array we need to provide an index for each axis
+## Use `array[x, y]` to select a single element from a 2D array
 
-To select data from our two dimensional array we must provide two indices or slices: 
-one which selects rows, and one which selects columns.
+To select a single element from our two dimensional array we must provide two indices: 
+one which selects the row, and one which selects the column.
 
 For example, to select single values in the array:
 
@@ -73,8 +69,7 @@ middle value in data: 0.06
 > which can be confusing when plotting data.
 {: .callout}
 
-## To select a column we can use a slice to select all rows
-
+## Use `data[:,x]` to select a column
 However we are more likely to want to work with particular rows or columns of our data. For this we need to combine slicing and indexing.
 
 The first column of the data contains the wavelengths. We can select this section of the data array and assign it to a variable `wavelengths` using the following command:
