@@ -18,6 +18,12 @@ keypoints:
 ---
 ## Most of the power of a programming language is in its libraries.
 
+Importing a library is like getting a piece of lab equipment out of a storage locker and setting it
+up on the bench. Libraries provide additional functionality to the basic Python package, much like
+a new piece of equipment adds functionality to a lab space. Just like in the lab, importing too
+many libraries can sometimes complicate and slow down your programs - so we only import what we
+need for each program. 
+
 *   A *library* is a collection of files (called *modules*) that contains
     functions for use by other programs.
     *   May also contain data values (e.g., numerical constants) and other things.
@@ -38,9 +44,7 @@ keypoints:
 ## A program must import a library module before using it.
 
 *   Use `import` to load a library module into a program's memory.
-*   Then refer to things from the module as `module_name.thing_name`.
-    *   Python uses `.` to mean "part of".
-*   Using `math`, one of the modules in the standard library:
+*   We can then refer to things from the module as `module_name.thing_name`. For example, using `math`, one of the modules in the standard library:
 
 ~~~
 import math
@@ -55,13 +59,21 @@ cos(pi) is -1.0
 ~~~
 {: .output}
 
-*   Have to refer to each item with the module's name.
-    *   `math.cos(pi)` won't work: the reference to `pi`
+*   You have to refer to each item with the module's name.
+For example, `math.cos(pi)` won't work: the reference to `pi`
         doesn't somehow "inherit" the function's reference to `math`.
+
+This [dotted notation]({{ page.root }}/reference/#dotted-notation)
+is used everywhere in Python: the thing that appears before the dot contains the thing that
+appears after.
+
+As an example, John Smith is the John that belongs to the Smith family.
+We could use the dot notation to write his name `smith.john`,
+just as `loadtxt` is a function that belongs to the `numpy` library.
 
 ## Use `help` to learn about the contents of a library module.
 
-*   Works just like help for a function.
+*   This works just like help for a function.
 
 ~~~
 help(math)

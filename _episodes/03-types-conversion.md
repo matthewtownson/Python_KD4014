@@ -14,11 +14,8 @@ keypoints:
 - "Use the built-in function `type` to find the type of a value."
 - "Types control what operations can be done on values."
 - "Strings can be added and multiplied."
-- "Use an index to get a single character from a string."
-- "Use a slice to get a substring."
-- "Use the built-in function `len` to find the length of a string."
-- "Must convert numbers to strings or vice versa when operating on them."
-- "Can mix integers and floats freely in operations."
+- "You can convert numbers to strings or vice versa when operating on them."
+- "You can mix integers and floats freely in operations."
 - "Variables only change value when something is assigned to them."
 ---
 ## Every value has a type.
@@ -109,98 +106,8 @@ print(separator)
 ~~~
 {: .output}
 
-## Use an index to get a single character from a string.
 
-*   The characters (individual letters, numbers, and so on) in a string are
-    ordered. For example, the string 'AB' is not the same as 'BA'. Because of
-    this ordering, we can treat the string as a list of characters.
-*   Each position in the string (first, second, etc.) is given a number. This
-    number is called an index or sometimes a subscript.
-*   Indices are numbered from 0.
-*   Use the position's index in square brackets to get the character at that
-    position.
-
-~~~
-atom_name = 'helium'
-print(atom_name[0])
-~~~
-{: .python}
-~~~
-h
-~~~
-{: .output}
-
-## Use a slice to get a substring.
-
-*   A part of a string is called a substring. A substring can be as short as a
-    single character.
-*   An item in a list is called an element. Whenever we treat a string as if it
-    were a list, the string's elements are its individual characters.
-*   A slice is a part of a string (or, more generally, any list-like thing).
-*   We take a slice by using `[start:stop]`, where `start` is replaced with the
-    index of the first element we want and `stop` is replaced with the index of
-    the element just after the last element we want.
-*   Mathematically, you might say that a slice selects `[start:stop)`.
-*   The difference between stop and start is the slice's length.
-*   Taking a slice does not change the contents of the original string. Instead,
-    the slice is a copy of part of the original string.
-
-~~~
-atom_name = 'sodium'
-print(atom_name[0:3])
-~~~
-{: .python}
-~~~
-sod
-~~~
-{: .output}
-
-## Use the built-in function `len` to find the length of a string.
-
-~~~
-print(len('helium'))
-~~~
-{: .python}
-~~~
-6
-~~~
-{: .output}
-
-*   Nested functions are evaluated from the inside out,
-    just like in mathematics.
-
-
-
-## Strings have a length (but numbers don't).
-
-*   The built-in function `len` counts the number of characters in a string.
-
-~~~
-print(len(full_name))
-~~~
-{: .python}
-~~~
-11
-~~~
-{: .output}
-
-*   But numbers don't have a length (not even zero).
-
-~~~
-print(len(52))
-~~~
-{: .python}
-~~~
----------------------------------------------------------------------------
-TypeError                                 Traceback (most recent call last)
-<ipython-input-3-f769e8e8097d> in <module>()
-----> 1 print(len(52))
-
-TypeError: object of type 'int' has no len()
-~~~
-{: .error}
-
-## Must convert numbers to strings or vice versa when operating on them.
+## You can convert numbers to strings or vice versa when operating on them.
 
 *   Cannot add numbers and strings.
 
@@ -232,7 +139,7 @@ print(str(1) + '2')
 ~~~
 {: .output}
 
-## Can mix integers and floats freely in operations.
+## You can mix integers and floats freely in operations.
 
 *   Integers and floating-point numbers can be mixed in arithmetic.
     *   Python 3 automatically converts integers to floats as needed. (Integer division in Python 2 will return an integer, the *floor* of the division.)

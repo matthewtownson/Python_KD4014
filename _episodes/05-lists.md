@@ -9,16 +9,19 @@ objectives:
 - "Write programs that create flat lists, index them, slice them, and modify them through assignment and method calls."
 keypoints:
 - "A list stores many values in a single structure."
+- "Use the built-in function `len` to find the length of a list."
 - "Use an item's index to fetch it from a list."
+- "Use slicing to fetch multiple items from a list."
 - "Lists' values can be replaced by assigning to them."
 - "Appending items to a list lengthens it."
 - "Use `del` to remove items from a list entirely."
 - "The empty list contains no values."
 - "Lists may contain values of different types."
-- "Character strings can be indexed like lists."
+- "Character strings can be indexed and sliced like lists."
 - "Character strings are immutable."
 - "Indexing beyond the end of the collection is an error."
 ---
+
 ## A list stores many values in a single structure.
 
 *   Doing calculations with a hundred variables called `pressure_001`, `pressure_002`, etc.,
@@ -26,23 +29,39 @@ keypoints:
 *   Use a *list* to store many values together.
     *   Contained within square brackets `[...]`.
     *   Values separated by commas `,`.
-*   Use `len` to find out how many values are in a list.
 
 ~~~
 pressures = [0.273, 0.275, 0.277, 0.275, 0.276]
 print('pressures:', pressures)
-print('length:', len(pressures))
 ~~~
 {: .python}
 ~~~
 pressures: [0.273, 0.275, 0.277, 0.275, 0.276]
-length: 5
 ~~~
 {: .output}
 
+## Use the built-in function `len` to find the length of a list.
+
+~~~
+print(len(pressures))
+~~~
+{: .python}
+~~~
+5
+~~~
+{: .output}
+
+*   Nested functions are evaluated from the inside out,
+    just like in mathematics.
+
 ## Use an item's index to fetch it from a list.
 
-*   Just like strings.
+*   Each position in the list (first, second, etc.) is given a number. This
+    number is called an index.
+*   Indices are numbered from 0.
+*   Use the position's index in square brackets to get the item at that
+    position.
+*   Note that the words item and element are often used interchangeably.
 
 ~~~
 print('zeroth item of pressures:', pressures[0])
@@ -52,6 +71,44 @@ print('fourth item of pressures:', pressures[4])
 ~~~
 zeroth item of pressures: 0.273
 fourth item of pressures: 0.276
+~~~
+{: .output}
+
+## Indexing in Python is from zero
+
+Programming languages like Fortran, MATLAB and R start counting at 1
+because that's what human beings have done for thousands of years.
+Languages in the C family (including C++, Java, Perl, and Python) count from 0
+because it represents an offset from the first value in the array (the second
+value is offset by one index from the first value). This is closer to the way
+that computers represent arrays (if you are interested in the historical
+reasons behind counting indices from zero, you can read
+[Mike Hoye's blog post](http://exple.tive.org/blarg/2013/10/22/citation-needed/)).
+As a result,
+if we have a Python list with M elements,
+its indices go from 0 to M-1.
+It takes a bit of getting used to,
+but one way to remember the rule is that
+the index is how many steps we have to take from the start to get the item we want.
+
+## Use slicing to fetch multiple items from a list.
+
+*   A part of a list is called a list slice. A list slice can be as short as a
+    single item.
+*   We take a slice by using `[start:stop]`, where `start` is replaced with the
+    index of the first item we want and `stop` is replaced with the index of
+    the item just after the last item we want.
+*   Mathematically, you might say that a slice selects `[start:stop)`.
+*   The difference between stop and start is the slice's length.
+*   Taking a slice does not change the contents of the original list. Instead,
+    the slice is a copy of part of the original list.
+
+~~~
+pressures[0:3]
+~~~
+{: .python}
+~~~
+[0.273, 0.275, 0.277]
 ~~~
 {: .output}
 
@@ -147,25 +204,47 @@ goals = [1, 'Create lists.', 2, 'Extract items from lists.', 3, 'Modify lists.']
 ~~~
 {: .python}
 
-## Character strings can be indexed like lists.
+## Character strings can be indexed and sliced like lists.
 
-*   Get single characters from a character string using indexes in square brackets.
+*   The characters (individual letters, numbers, and so on) in a string are
+    ordered. For example, the string 'AB' is not the same as 'BA'. Because of
+    this ordering, we can treat the string as a list of characters.
+*   Get characters from a character string using indexes and slices in square brackets.
+*   The built-in function `len` counts the number of characters in a string.
 
 ~~~
 element = 'carbon'
 print('zeroth character:', element[0])
-print('third character:', element[3])
+print('sub-string:', element[1:4])
+print('length:', len(element))
 ~~~
 {: .python}
 ~~~
 zeroth character: c
-third character: b
+sub-string: arb
+length: 6
 ~~~
 {: .output}
 
+*   But numbers don't have a length (not even zero).
+
+~~~
+print(len(52))
+~~~
+{: .python}
+~~~
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-3-f769e8e8097d> in <module>()
+----> 1 print(len(52))
+
+TypeError: object of type 'int' has no len()
+~~~
+{: .error}
+
 ## Character strings are immutable.
 
-*   Cannot change the characters in a string after it has been created.
+*   You cannot change the characters in a string after it has been created.
     *   *Immutable*: can't be changed after creation.
     *   In contrast, lists are *mutable*: they can be modified in place.
 *   Python considers the string to be a single value with parts,

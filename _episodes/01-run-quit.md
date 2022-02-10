@@ -18,35 +18,19 @@ keypoints:
 
 *   They have the `.py` extension to let everyone (including the operating system) 
     know it is a Python program. This is convention, not a requirement.
-*   It's common to write them using a text editor but we are going to use
-    the [Jupyter Notebook][jupyter].
-*   The bit of extra setup is well worth it because the Notebook provides code completion 
-    and other helpful features.
+*   You can write `.py` files using a text editor such as TextEdit (Mac, select Plain Text Mode) or Notepad (Windows)
+
+## Jupyter Notebooks are used for editing *and* running Python.
+
 *   Notebook files have the extension `.ipynb` to distinguish them from plain-text Python programs.
-
-## Use the Jupyter Notebook for editing and running Python.
-
-*   The [Anaconda package manager][anaconda] is an automated way to install the Jupyter notebook.
-    *   See [the setup instructions]({{ page.root }}/setup/) for Anaconda installation instructions.
-*   It also installs all the extra libraries it needs to run.
-*   Once you have installed Python and the Jupyter Notebook requirements, open a shell and type:
-
-    ~~~
-    $ jupyter notebook
-    ~~~
-
-*   This will start a Jupyter Notebook server and open your default web browser. 
-*   The server runs locally on your machine only and does not use an internet connection.
-*   The server sends messages to your browser.
-*   The server does the work and the web browser renders the notebook.
-*   You can type code into the browser and see the result when the web page talks to the server.
-*   This has several advantages:
+*   The [Anaconda package manager][anaconda] is an automated way to install the Jupyter notebook. It also installs some extra libraries that are useful for scientific computing (e.g. Numpy, Scipy)
+*   The Jupyter Notebook server runs locally on your machine only and does not use an internet connection. The server sends messages to your web browser.
+*   So the server does the work (is the brain) and the web browser renders the notebook.
+*   Jupyter Notebooks have several useful features:
     *   You can easily type, edit, and copy and paste blocks of code.
-    *   Tab complete allows you to easily access the names of things you are using
-        and learn more about them.
-    *   It allows you to annotate your code with links, different sized text, bullets, etc.
+    *   You can annotate your code with links, different sized text, bullets, etc.
         to make it more accessible to you and your collaborators.
-    *   It allows you to display figures next to the code that produces them
+    *   You can display figures next to the code that produces them
         to tell a complete story of the analysis.
 
 ![Example Jupyter Notebook](../fig/0_jupyter_notebook_example.jpg)  
