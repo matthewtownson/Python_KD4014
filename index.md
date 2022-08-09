@@ -11,8 +11,7 @@ but can be taught using a regular Python interpreter as well.
 Please note that this lesson uses Python 3 rather than Python 2.
 
 > ## Accompanying resources
-> The presentation which accompanies the CDT-ReNU training programme can be found [here](https://lucydot.github.io/slides/Python_211122).    
-> The presentatioin which accompanies the Level 6 course at Northumbria University can be found [here](https://lucydot.github.io/slides/Python_2201).  
+> The presentation which accompanies this website can be found [here](https://lucydot.github.io/slides/2022_Python/).    
 {: .prereq}
 
 > ## Prerequisites
@@ -20,11 +19,11 @@ Please note that this lesson uses Python 3 rather than Python 2.
 >    Please see [the setup instructions]({{ page.root }}/setup/)
 >    for details.
 >
-> 2. Learners must get the data before class/
+> 2. Learners must download the data before class.
 >    Please see [the setup instructions]({{page.root}}/setup/)
 >    for details.
 >
 > 3.  Learners need to understand what a file, directory
->     and working directory is
+>     and working directory are.
 >  
 {: .prereq}
