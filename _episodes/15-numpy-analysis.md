@@ -1,7 +1,7 @@
 ---
 title: "Analysing data using Numpy"
-teaching: 15
-exercises: 15
+teaching: 25
+exercises: 60
 questions:
 - "How can I analyse data using Numpy?"
 - "How can I fit a polynomial function to data?"
