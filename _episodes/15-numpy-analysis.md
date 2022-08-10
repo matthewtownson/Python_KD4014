@@ -1,5 +1,5 @@
 ---
-title: "Analysing data with NumPy"
+title: "Analysing data using Numpy"
 teaching: 15
 exercises: 15
 questions:
