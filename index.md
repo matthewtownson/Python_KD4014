@@ -3,12 +3,13 @@ layout: lesson
 root: .
 ---
 
-This lesson is an introduction to programming in Python
-for people with little or no previous programming experience.
-It uses plotting UV-Vis data as its motivating example.
-This lesson references the Jupyter Notebook,
-but can be taught using a regular Python interpreter as well.
-Please note that this lesson uses Python 3 rather than Python 2.
+This course
+- is an introduction to programming in Python
+for people with little or no previous programming experience
+- is aimed at physical scientists: using the analysis of UV-Vis data as a motivating example
+- references the Jupyter Notebook,
+but can be taught using a regular Python interpreter as well
+- uses Python 3 rather than Python 2
 
 > ## Accompanying resources
 > The presentation which accompanies this website can be found [here](https://lucydot.github.io/slides/2022_Python/).    
