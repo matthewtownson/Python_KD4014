@@ -17,7 +17,7 @@ keypoints:
 - Import the `sys` module and use `sys.argv` to take a command line argument
 ---
 
-In the previous lesson we wrote a script for plotting the average, maximum and mean of the absorption.
+In the previous lessons we wrote some code for plotting the average, maximum and mean of the absorption.
 If you wanted to share this script with other researchers you may want to export this code cell as a plain text file. You can then send the file in an email or - even better - publish it on a website like [Github](https://github.com) or [Gitlab](https://gitlab.com). Plain text can be easier to version control than Jupyter Notebooks, although there are a growing number of tools (example [nbdime](https://github.com/jupyter/nbdime)) which are designed to make the version control of Jupyter Notebooks easier.
 
 To convert the code in your Jupyter Notebook cell into a plain text `.py` file there are two options:
