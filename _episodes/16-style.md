@@ -1,7 +1,7 @@
 ---
 title: "Programming Good Practice"
 teaching: 15
-exercises: 15
+exercises: 25
 questions:
 - "How can I make my programs more readable?"
 - "How can programs check their own operation?"
