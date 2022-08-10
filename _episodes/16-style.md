@@ -6,16 +6,19 @@ questions:
 - "How can I make my programs more readable?"
 - "How can programs check their own operation?"
 - "How can I document my code?"
+- "How can I make my code more reproducibility?"
 
 objectives:
 - "Use Python community coding standards (PEP-8)."
 - "Use assertions to check for internal errors"
 - "Use docstrings to provide online help"
+- "Print the version number of imported libraries"
 
 keypoints:
 - "Follow standard Python style in your code."
 - "Use assertions to check for internal errors"
 - "Use docstrings to provide online help."
+- "Use `__version__` to increase code reproducibility."
 ---
 
 ## Follow standard Python style in your code.
@@ -25,9 +28,9 @@ Python relies strongly on coding style, as we may notice by the indentation we a
 Python proposes a standard style through one of its first Python Enhancement Proposals (PEP), [PEP8](https://www.python.org/dev/peps/pep-0008), and highlights the importance of readability in the [Zen of Python](https://www.python.org/dev/peps/pep-0020).
 
 We may highlight some points:
-*   document your code
 *   use clear, meaningful variable names
 *   use white-space, *not* tabs, to indent lines
+*   consistency is key
 
 Adhering to PEP8 makes it easier for other Python developers to read and understand your code,
 and to understand what their contributions should look like.
@@ -68,6 +71,12 @@ calc_bulk_density(mass, volume)
     Return dry bulk density = powder mass / powder volume.
 ~~~
 {: .output}
+
+## Use `__version__` to increase code reproducibility
+
+
+*   Code reproducibility (running the same code twice to give the same output) is more complex and difficult than you might think.
+*   One straight-forward thing you can do is print the version number for each package you import using `print(packagename.__version__)`.
 
 > ## Multiline Strings
 >
