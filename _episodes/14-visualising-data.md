@@ -1,7 +1,7 @@
 ---
 title: "Visualizing data with Matplotlib"
-teaching: 15
-exercises: 15
+teaching: 20
+exercises: 30
 questions:
 - "How can I plot my data?"
 - "How can I save my plot for publishing?"
