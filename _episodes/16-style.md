@@ -150,7 +150,7 @@ calc_bulk_density(mass, volume)
 
 > ## Improve the Code Quality I
 >
-> 1. Read the [Code Quality criteria](./files/CodeQuality.pdf) for the course assessment.
+> 1. Read the [Code Quality criteria](../files/CodeQuality.pdf) for the course assessment.
 > 2. Read the code below and predict what it does
 > 3. Run the code and inspect the output
 > 3. Refactor the program to improve the Code Quality. There are six edits (or more!) that can be made.
