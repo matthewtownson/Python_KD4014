@@ -171,6 +171,25 @@ We are only touching the surface of plotting with matplotlib.
 There are hundreds of different plots, and thousands of ways to customise your plot.
 A good starting point for exploring the options is by looking online: The [official matplotlib gallery](https://matplotlib.org/2.0.2/gallery.html) and the [Python graph gallery](https://www.python-graph-gallery.com/matplotlib/) have lots of code examples.
 
+> ## Scatter plots
+>
+> Scatter plots are useful for identifying the association between two variables. For example, we could measure the > speed of a car at equal intervals between 0 and 10 seconds (inclusive) as 2, 4.2, 6.1, 8.3, 9.9 m/s. Scatter plot > this data.
+> 
+> > ## Solution
+> > ~~~
+> > import matplotlib.pyplot as plt
+> > import numpy as np
+> > 
+> > time = np.linspace(0,10,5)
+> > speed = np.array([2,4.2,6.1,8.3,11.2])
+> > plt.scatter(time,speed)
+> > plt.xlabel("time (s)")
+> > plt.ylabel("speed (m/s)")
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+{: .challenge}
+
 > ## Plot Scaling
 >
 > Why do all of our plots stop just short of the upper end of our graph?
