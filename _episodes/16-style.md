@@ -1,5 +1,5 @@
 ---
-title: "Programming Good Practice"
+title: "Code Quality"
 teaching: 15
 exercises: 25
 questions:
