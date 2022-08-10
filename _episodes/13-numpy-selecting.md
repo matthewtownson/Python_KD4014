@@ -1,5 +1,5 @@
 ---
-title: "Selecting data from Numpy arrays"
+title: "Retrieving data from Numpy arrays"
 teaching: 15
 exercises: 15
 questions:
