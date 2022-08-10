@@ -1,5 +1,5 @@
 ---
-title: "Numpy arrays for storing data"
+title: "Storing data in Numpy arrays"
 teaching: 15
 exercises: 15
 questions:
