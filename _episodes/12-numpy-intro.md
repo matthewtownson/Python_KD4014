@@ -10,6 +10,8 @@ objectives:
 - "Describe the key features and use-cases of a Numpy n-dimensional array"
 - "Clean data for easier file parsing"
 - "Save data to a file"
+- "Create Numpy arrays"
+- "Create an automatic counter within a FOR loop"
 - "Iterate through 1d and 2d Numpy arrays"
 keypoints:
 - "Use the `NumPy` library to work with numerical data in Python"
@@ -19,6 +21,8 @@ keypoints:
 - "An array is a central data structure of the NumPy library"
 - "Extra information about an array are stored as attributes"
 - "The `savetxt` function is used to write data to a file"
+- "`numpy.linspace` generates evenly spaced numbers over a given interval"
+- "The `enumerate` function allows us to have an automatic counter within a `for` loop"
 ---
 
 ## Use the `NumPy` library to work with numerical data in Python
@@ -251,74 +255,107 @@ numpy.loadtxt("./data/transmittance.csv")
 ~~~
 {: .language-python}
 
-> ## Creating Numpy arrays
+## Create an array for storing data yet-to-be-generated using `numpy.zeros`
+
+In the previous example we imported data from a file as a Numpy array. However it may be that we want to create a Numpy array which stores calculation data that is generated within the code itself.
+For example, we may want to calculate the velocity of a ball at 50 points in time between 0 and 10 seconds inclusive. First we create an empty Numpy array with the correct dimensions
+
+~~~
+velocity_array = numpy.zeros(50) # empty array to hold calculated values
+~~~
+{: .language-python}
+
+## Use `numpy.linspace` to generate evenly spaced numbers over a given interval.
+
+To specify the times at which we take measurements of the ball speed we can use the `numpy.linspace` function. This will generate an array with 50 elements, each of which is evenly spaced between 0 and 10 (inclusive).
+
+~~~
+times = numpy.linspace(0,10,50) # times between 0 and 10s
+~~~
+{: .language-python}
+
+## The `enumerate` function allows us to have an automatic counter within a `for` loop
+
+Enumerate is a Python built-in function. It allows us to have an automatic counter within a `for` loop. The best way to understand `enumerate` is to see it in action.
+
+~~~
+for index, value in enumerate([10,20,30]):
+    print("index is: ", index)
+    print("value is: ", value)
+~~~
+{: .language-python}
+
+~~~
+index is: 0
+value is: 10
+index is: 1
+value is: 20
+index is: 2
+value is: 30
+~~~
+{: .output}
+
+We can use `enumerate` to index the velocity array as we iterate through the `for` loop.
+
+~~~
+velocity_array = numpy.zeros(50) # empty array to hold calculated values
+
+for index,time in enumerate(times): 
+       velocity_array[index] = v_0 + g*time
+~~~
+{: .language-python}
+
+Finally, we can round the calculated velocities to 2 decimal places.
+
+~~~
+numpy.round(velocity_list, decimals=2) 
+~~~
+{: .language-python}
+
+Although this approach generates the correct velocity values, we can use [Numpy operations] to write more readable code in fewer lines. This will be explored further in the following question.
+
+> ## Creating two-dimensional Numpy arrays
 >
-> In the example above we imported data from a file as a Numpy array. However there are other ways to create a Numpy array.
-> For example, the following code creates an array filled with zeros and then populates it with the velocity of a ball at a sequence of evenly spaced times between 0 and 10 seconds.
-> 
-> ~~~
-> import numpy
->
-> g = 9.81 # acceleration due to gravity in m/s^2
-> v_0 = 0 # starting velocity in m/s
-> times = numpy.linspace(0,10,50) # times between 0 and 10s
-> velocity_array = numpy.zeros(50) # empty array to hold calculated values
-> 
-> for index,time in enumerate(times): 
->        velocity_array[index] = v_0 + g*time
-> ~~~
-> {: .python}
->
-> What does `numpy.linspace` generate? What is the `enumerate` function?
-> Using the numpy `round` function, round all of the velocity values to two decimal places
->
-> > ## Solution
-> >
-> > From the Python documentation, we see that `numpy.linspace` generates evenly spaced numbers over a given interval.
-> > In this case, it generates 50 numbers between 0 to 10 (inclusive).
-> > Enumerate is a Python built-in function. It allows us to loop over something and have an automatic counter. The best way to understand it is to see it in 
-> > action:
-> > 
-> > ~~~
-> > for index, value in enumerate([10,20,30]):
-> >   print("index is: ", index)
-> >   print("value is: ", value)
-> > ~~~
-> > {: .python}
-> > 
-> > ~~~
-> > index is: 0
-> > value is: 10
-> > index is: 1
-> > value is: 20
-> > index is: 2
-> > value is: 30
-> > ~~~
-> > {: .output}
-> > 
-> > ~~~
-> > numpy.round(velocity_list, decimals=2) 
-> > ~~~
-> > {: .python}
-> {: .solution}
->
-> Now create a two-dimensional velocity array with 4 rows (each corresponding to a different v_0 value: -10,0,10,20 m/s) and 50 columns 
-> (each corresponding to a different point in time between 0 and 10s). Use two nested for loops to iterate through and populate the velocity array
+> Create a two-dimensional velocity with 4 rows and 5000 columns. Each row corresponds to a different $v_0$ value 
+> (-10,0,10,20 m/s) and each column corresponds to an evenly spaced point in time $t$ (between 0 and 100 seconds 
+> inclusive). Use two nested for loops to iterate through the array and populate each element with the corresponding 
+> velocity for that particular $v_0$ and $t$.
 > 
 > > ~~~
 > > import numpy
 > >
-> g = 9.81 # acceleration due to gravity in m/s^2
-> v_0_array = numpy.array([-10,0,10,20]) # starting velocities in m/s
-> times = numpy.linspace(0,10,50) # times between 0 and 10s
-> velocity_array = numpy.zeros((4,50)) # empty array to hold calculated values
->
-> for i, v_0 in enumerate(v_0_array):
->   for j,time in enumerate(times): 
->        velocity_array[i,j] = v_0 + g*time
+> > g = 9.81 # acceleration due to gravity in m/s^2
+> > v_0_array = numpy.array([-10,0,10,20]) # starting velocities in m/s
+> > times = numpy.linspace(0,100,5000) # times between 0 and 10s
+> > velocity_array = numpy.zeros((4,5000)) # empty array to hold calculated values
+> >
+> > for i, v_0 in enumerate(v_0_array):
+> >  for j,time in enumerate(times): 
+> >       velocity_array[i,j] = v_0 + g*time
 > ~~~
 > > {: .python}
 > {: .solution}
+>
+> For loops can be computationally inefficient. To speed up this calculation we can make use of vectorized 
+> operations in Numpy. Use [Numpy operations](https://numpy.org/doc/stable/user/quickstart.html#basic-operations) and [broadcasting](https://numpy.org/doc/stable/user/basics.broadcasting.html) to re-write this code so it executes faster. To measure the
+> execution 
+> time you can use the 
+> [`%%timeit` Jupyter magic command](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit).
+> 
+> > ~~~
+> > import numpy
+> >
+> > g = 9.81 # acceleration due to gravity in m/s^2
+> > v_0 = numpy.array([[-10,0,10,20]]).transpose() # starting velocities in m/s
+> > times = numpy.array([numpy.linspace(0,100,5000)]) # times between 0 and 10s
+> > velocity_array = v_0 + g*times
+> > ~~~
+> > {: .python}
+> {: .solution}
+> 
+> Note that the `v_0` array in the example code above is transposed to allow 
+> [Numpy broadcasting](https://numpy.org/doc/stable/user/basics.broadcasting.html) between
+> two differently shaped arrays
 {: .challenge}
 
 
