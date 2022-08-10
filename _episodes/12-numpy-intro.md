@@ -316,11 +316,14 @@ Although this approach generates the correct velocity values, we can use [Numpy 
 
 > ## Creating two-dimensional Numpy arrays
 >
-> Create a two-dimensional velocity with 4 rows and 5000 columns. Each row corresponds to a different $v_0$ value 
-> (-10,0,10,20 m/s) and each column corresponds to an evenly spaced point in time $t$ (between 0 and 100 seconds 
+> Create a two-dimensional velocity with 4 rows and 5000 columns. Each row corresponds to a different starting 
+> velocity value 
+> (-10,0,10,20 m/s) and each column corresponds to an evenly spaced point in time (between 0 and 100 seconds 
 > inclusive). Use two nested for loops to iterate through the array and populate each element with the corresponding 
-> velocity for that particular $v_0$ and $t$.
-> 
+> velocity for that particular starting velocity and time.
+>
+> > ## Solution
+> >
 > > ~~~
 > > import numpy
 > >
@@ -341,7 +344,9 @@ Although this approach generates the correct velocity values, we can use [Numpy 
 > execution 
 > time you can use the 
 > [`%%timeit` Jupyter magic command](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit).
-> 
+>
+> > ## Solution
+> >
 > > ~~~
 > > import numpy
 > >
@@ -370,7 +375,9 @@ Although this approach generates the correct velocity values, we can use [Numpy 
 > print(math.sqrt(x))
 > ~~~
 > {: .python}
-> 
+>
+> > ## Solution
+> >
 > > This code will produce an error because `math.sqrt` can only take the square root of python scalars 
 > > (integers or floats) - it can't take a Numpy array as an argument. 
 > > To find the square root of elements in an array we must use `Numpy.sqrt`. 
