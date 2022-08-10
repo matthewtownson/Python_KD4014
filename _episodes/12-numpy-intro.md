@@ -1,7 +1,7 @@
 ---
 title: "Storing data in Numpy arrays"
-teaching: 15
-exercises: 15
+teaching: 20
+exercises: 25
 questions:
 - "What is a Numpy array and when is it useful?"
 - "How can I import and clean data in Python?"
