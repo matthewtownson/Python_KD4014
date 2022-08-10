@@ -1,7 +1,7 @@
 ---
 title: "Writing Functions"
-teaching: 10
-exercises: 15
+teaching: 15
+exercises: 60
 questions:
 - "How can I create my own functions?"
 objectives:
