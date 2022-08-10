@@ -1,7 +1,7 @@
 ---
 title: Running your Code as a Python Script
-teaching: 10
-exercises: 10
+teaching: 15
+exercises: 25
 questions:
 - "How can I export my Jupyter notebook as a Python script?"
 - "How do I run a Python script?"
