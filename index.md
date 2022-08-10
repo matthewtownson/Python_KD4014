@@ -14,16 +14,17 @@ Please note that this lesson uses Python 3 rather than Python 2.
 > The presentation which accompanies this website can be found [here](https://lucydot.github.io/slides/2022_Python/).    
 {: .prereq}
 
+> ## Questionnaire
+> Please complete [this questionnaire](https://forms.office.com/r/G2PXrKqMBf) at the start of the course.
+{: .prereq}
+
 > ## Prerequisites
-> 1. Learners must install Python before the class starts.
+> 1. Learners should install Python before the class starts.
 >    Please see [the setup instructions]({{ page.root }}/setup/)
 >    for details.
 >
-> 2. Learners must download the data before class.
+> 2. Learners should download the data before class.
 >    Please see [the setup instructions]({{page.root}}/setup/)
 >    for details.
->
-> 3.  Learners need to understand what a file, directory
->     and working directory are.
 >  
 {: .prereq}
