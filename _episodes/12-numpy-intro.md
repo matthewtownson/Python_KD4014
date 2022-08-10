@@ -305,10 +305,10 @@ for index,time in enumerate(times):
 ~~~
 {: .language-python}
 
-Finally, we can round the calculated velocities to 2 decimal places.
+Finally, we can use `numpy.around` to round the calculated velocities to 2 decimal places.
 
 ~~~
-numpy.round(velocity_list, decimals=2) 
+numpy.around(velocity_list, decimals=2) 
 ~~~
 {: .language-python}
 
@@ -332,7 +332,7 @@ Although this approach generates the correct velocity values, we can use [Numpy 
 > > for i, v_0 in enumerate(v_0_array):
 > >  for j,time in enumerate(times): 
 > >       velocity_array[i,j] = v_0 + g*time
-> ~~~
+> > ~~~
 > > {: .python}
 > {: .solution}
 >
@@ -358,4 +358,24 @@ Although this approach generates the correct velocity values, we can use [Numpy 
 > two differently shaped arrays
 {: .challenge}
 
-
+> ## Python round vs Numpy round.
+>
+> Why will the following code produce an error?
+> 
+> ~~~
+> import numpy
+> import math
+> 
+> x = numpy.array([2,6,7])
+> print(math.sqrt(x))
+> ~~~
+> {: .python}
+> 
+> > This code will produce an error because `math.sqrt` can only take the square root of python scalars 
+> > (integers or floats) - it can't take a Numpy array as an argument. 
+> > To find the square root of elements in an array we must use `Numpy.sqrt`. 
+> > Numpy takes the square root 
+> > [element-wise](https://scipy-lectures.org/intro/numpy /operations.html#elementwise-operations).
+> > 
+> {: .solution}
+{: .challenge}
