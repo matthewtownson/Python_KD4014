@@ -1,7 +1,7 @@
 ---
 title: "Retrieving data from Numpy arrays"
-teaching: 15
-exercises: 15
+teaching: 20
+exercises: 20
 questions:
 - "How can I select data from a NumPy array?"
 objectives:
