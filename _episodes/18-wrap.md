@@ -3,7 +3,6 @@ title: "Wrap-Up"
 teaching: 20
 exercises: 0
 questions:
-- "What have we learned?"
 - "What else is out there and where do I find it?"
 objectives:
 - "Name and locate scientific Python community sites for software, workshops, and help."
@@ -32,10 +31,6 @@ keypoints:
     [Pandas](http://stackoverflow.com/questions/tagged/pandas),
     and other topics.
 
-## Top Tips
+## Final message
 
-* Document your code: your future self will thank you.
-
-* Aim for reproducibility: consider using Jupyter Notebooks as SI to papers.
-
-* Keep going: programming isn't easy, but it can be very rewarding.
+Keep going: programming isn't always easy, but it can be very rewarding.
