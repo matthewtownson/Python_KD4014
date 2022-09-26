@@ -16,7 +16,7 @@ but can be taught using a regular Python interpreter as well
 {: .prereq}
 
 > ## Questionnaire
-> Please complete [this questionnaire](https://forms.office.com/r/G2PXrKqMBf) at the start of the course.
+> Please complete [this questionnaire](https://forms.office.com/r/pSBW7SRVCP) at the start of the course.
 {: .prereq}
 
 > ## Prerequisites
