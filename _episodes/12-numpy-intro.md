@@ -148,7 +148,7 @@ we can print the variable's value:
 data = numpy.loadtxt("./data/transmittance.csv",delimiter=",",skiprows=1)
 print(data)
 ~~~
-{: .language-python
+{: .language-python}
 
 ## An array is a central data structure of the NumPy library
 
