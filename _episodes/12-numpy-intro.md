@@ -145,6 +145,7 @@ If we want to check that the data have been loaded,
 we can print the variable's value:
 
 ~~~
+data = numpy.loadtxt("./data/transmittance.csv",delimiter=",",skiprows=1)
 print(data)
 ~~~
 {: .language-python
