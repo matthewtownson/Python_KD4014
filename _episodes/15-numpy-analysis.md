@@ -26,7 +26,7 @@ We will also use Numpy array operations to calculate the reflectance of each mat
 
 ### Digging a little deeper into transmittance spectroscopy
 
-![Schematic for transmittance spectroscopy](../fig/trasmittance_schematic.png)
+![Schematic for transmittance spectroscopy](../fig/transmittance_schematic.png)
 
 The schematic above is taken from the Lab script for course KD5081 at Northumbria University.
 
@@ -63,7 +63,7 @@ array([   0.79366912, -275.85006769])
 ~~~
 {: .output}
  
-The `polyfit` function returns two values. From the function documentation (`numpy.polyfit?`) we can see that these are the polynomial coefficients with the highest power returned first. As this is a linear fit, the first value is the gradient of the line and the second value is the intercept on the x-axis.
+The `polyfit` function returns two values. From the function documentation (`numpy.polyfit?`) we can see that these are the polynomial coefficients with the highest power returned first. As this is a linear fit, the first value is the gradient of the line and the second value is the intercept on the y-axis.
 
 We can overlay the fit on our dataset to verify that our fit is sensible. To do this we first evaluate this fit using the `numpy.polyval` function for a number of points along the x-axis.
 
