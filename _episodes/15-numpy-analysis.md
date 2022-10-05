@@ -31,7 +31,7 @@ We will also use Numpy array operations to calculate the reflectance of each mat
 The schematic above is taken from the Lab script for course KD5081 at Northumbria University.
 
 The optical transmittance spectrum of a semiconductor yields information on the energy band structure of the semiconductor. In particular if the frequency of the radiation $\nu$ is such that $E_g<h\nu$ where $E_g$ is the energy bandgap of the semiconductor then each photon absorbed creates an electron-hole pair and there is weak transmittance. If however $E_g>h\nu$ then the electron-hole pair cannot be generated and there is usually strong transmittance in this region. Thus by measuring the position of the transmittance edge, one can determine the energy bandgap of the material using the equation
-$$ E_g = h\nu = \frac{hc}{\lambda_0} $$
+$E_g = h\nu = \frac{hc}{\lambda_0}$
 
 It is, however, often difficult to locate the absorption edge precisely as it may be “smeared out” over a wide wavelength range. A simple criterion that suffices in this case is to take the point which is obtained by extrapolating the transmission curves. This requires a straight line fitting to the data, which will be our first analysis task.
 
@@ -44,7 +44,7 @@ plt.plot(wavelengths[50:111],ITO_transmittance[50:111],label='ITO')
 ~~~
 {: .language-python}
 
-![](./fig/analysis_1.png)
+![](../fig/analysis_1.png)
 
 We have done this manually, and "by eye", but there are ways  - beyond the scope of this course - to automate this process and reduce role of human judgement. For example, see [this answer](https://stackoverflow.com/a/13728059) on the very useful site Stack Overflow.
 
@@ -89,7 +89,7 @@ plt.title("ITO transmittance")
 ~~~
 {: .language-python}
 
-![](./fig/analysis_2.png)
+![](../fig/analysis_2.png)
 
 This looks sensible! To calculate the band gap energy of our material we need to calculate the point at which the fit intercepts with the x-axis. As our fit is linear, this point corresponds to the one and only root of our polynomial equation. To find the root(s) of a polynomial equation we can use the `numpy.roots` function.
 
@@ -106,7 +106,7 @@ print(lambda_0)
 
 ## Use the scipy.constants module for physical constants
 
-To calculate the band gap we use the equation $$ E_g = h\nu = \frac{hc}{\lambda_0} $$. This equation has two physical constants: `h` and `c`. We could hard code these values using scientific notation
+To calculate the band gap we use the equation $E_g = h\nu = \frac{hc}{\lambda_0}$. This equation has two physical constants: `h` and `c`. We could hard code these values using scientific notation
 
 ~~~
 h = 6.6e-34 # plancks constant
@@ -228,7 +228,7 @@ tripledata:
 ~~~
 {: .output}
 
-To calculate the reflectance `R` of the ITO we can use the formula $$ R = \frac{1-T}{1+T} $$. 
+To calculate the reflectance `R` of the ITO we can use the formula $R = \frac{1-T}{1+T}$. 
 
 ~~~
 ITO_reflectance = (1 - 0.01*ITO_transmittance)/(1 + 0.01*ITO_transmittance)
