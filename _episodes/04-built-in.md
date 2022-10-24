@@ -13,7 +13,6 @@ objectives:
 - "Use help to display documentation for built-in functions."
 - "Correctly describe situations in which SyntaxError and NameError occur."
 keypoints:
-- "Use comments to add documentation to programs."
 - "A function may take zero or more arguments."
 - "Commonly-used built-in functions include `max`, `min`, and `round`."
 - "Functions may only work for certain (combinations of) arguments."
@@ -25,13 +24,6 @@ keypoints:
 - "Python reports a runtime error when something goes wrong while a program is executing."
 - "Fix syntax errors by reading the source code, and runtime errors by tracing the program's execution."
 ---
-## Use comments to add documentation to programs.
-
-~~~
-# This sentence isn't executed by Python.
-adjustment = 0.5   # Neither is this - anything after '#' is ignored.
-~~~
-{: .python}
 
 ## A function may take zero or more arguments.
 
@@ -72,6 +64,23 @@ print(min('a', 'A', '0'))
 ~~~
 3
 0
+~~~
+{: .output}
+
+## Every function returns something.
+
+*   Every function call produces some result.
+*   If the function doesn't have a useful result to return,
+    it usually returns the special value `None`.
+
+~~~
+result = print('example')
+print('result of print is', result)
+~~~
+{: .python}
+~~~
+example
+result of print is None
 ~~~
 {: .output}
 
@@ -135,11 +144,23 @@ round(...)
 ~~~
 {: .output}
 
+## (The Jupyter Notebook has an alternative way to access function descriptions)
+
+
+*    Type a function name with a question mark after it.
+
+~~~
+round?
+~~~
+{: .python}
+
+
 ## Python reports a syntax error when it can't understand the source of a program.
 
 *   Won't even try to run the program if it can't be parsed.
 
 ~~~
+
 # Forgot to close the quote marks around the string.
 name = 'Feng
 ~~~
@@ -196,29 +217,6 @@ NameError: name 'aege' is not defined
 
 *   Fix syntax errors by reading the source and runtime errors by tracing execution.
 
-## The Jupyter Notebook has two ways to get help.
-
-*   Place the cursor inside the parenthesis of the function,
-    hold down `shift`,
-    and press `tab`.
-*   Or type a function name with a question mark after it.
-
-## Every function returns something.
-
-*   Every function call produces some result.
-*   If the function doesn't have a useful result to return,
-    it usually returns the special value `None`.
-
-~~~
-result = print('example')
-print('result of print is', result)
-~~~
-{: .python}
-~~~
-example
-result of print is None
-~~~
-{: .output}
 
 > ## What Happens When
 >
@@ -244,50 +242,6 @@ result of print is None
 > {: .solution}
 {: .challenge}
 
-> ## Spot the Difference
->
-> 1. Predict what each of the `print` statements in the program below will print.
-> 2. Does `max(len(rich), poor)` run or produce an error message?
->    If it runs, does its result make any sense?
->
-> ~~~
-> easy_string = "abc"
-> print(max(easy_string))
-> rich = "gold"
-> poor = "tin"
-> print(max(rich, poor))
-> print(max(len(rich), len(poor)))
-> ~~~
-> {: .python}
-> > ## Solution
-> > 1. ~~~
-> >    print(max(easy_string))
-> >    ~~~
-> >    {: .python}
-> >    ~~~
-> >    c
-> >    ~~~
-> >    {: .output}
-> >    ~~~
-> >    print(max(rich, poor))
-> >    ~~~
-> >    {: .python}
-> >    ~~~
-> >    tin
-> >    ~~~
-> >    {: .output}
-> >    ~~~
-> >    print(max(len(rich), len(poor)))
-> >    ~~~
-> >    {: .python}
-> >    ~~~
-> >    4
-> >    ~~~
-> >    {: .output}
-> > 2. It throws a TypeError. The command is trying to run `max(4, 'tin')` and you can't compare
-> >    a string and an integer
-> {: .solution}
-{: .challenge}
 
 > ## Why Not?
 >
@@ -301,15 +255,3 @@ result of print is None
 > {: .solution}
 {: .challenge}
 
-> ## Last Character of a String
->
-> If Python starts counting from zero,
-> and `len` returns the number of characters in a string,
-> what index expression will get the last character in the string `name`?
-> (Note: we will see a simpler way to do this in a later episode.)
->
-> > ## Solution
-> >
-> > `name[len(name) - 1]`
-> {: .solution}
-{: .challenge}
