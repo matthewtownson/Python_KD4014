@@ -49,26 +49,9 @@ We will teach Python using the [Jupyter notebook][jupyter], a
 programming environment that runs in a web browser. Jupyter requires a reasonably 
 up-to-date browser, preferably a current version of Chrome, Safari, or Firefox 
 (note that Internet Explorer version 9 and below are *not* supported). If you 
-installed Python using Anaconda, Jupyter should already be on your system. If 
+installed Python using Anaconda, Jupyter should already be on your system (search for `Jupyter Notebook'). If 
 you did not use Anaconda, use the Python package manager pip
 (see the [Jupyter website][jupyter-install] for details.)
-
-## Check that jupyter notebook is installed
-
-To start the notebook, open a terminal or git bash and type the command:
-
-~~~
-$ jupyter notebook
-~~~
-{: .bash}
-
-To start the Python interpreter without the notebook, open a terminal 
-or Git Bash and type the command:
-
-~~~
-$ python
-~~~
-{: .bash}
 
 ## Binder as an alternative
 
