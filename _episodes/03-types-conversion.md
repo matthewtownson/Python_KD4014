@@ -180,54 +180,6 @@ first is 2 and second is 5
     creates a new value, and assigns it to `second`.
 *   After that, `second` does not remember where it came from.
 
-
-> ## Challenge
->
-> If you assign `a = 123`,
-> what happens if you try to get the second digit of `a` via `a[1]`?
->
-> > ## Solution
-> > Numbers are not stored in the written representation,
-> > so they can't be treated like strings.
-> >
-> > ~~~
-> > a = 123
-> > print(a[1])
-> > ~~~
-> > {: .python}
-> > ~~~
-> > TypeError: 'int' object is not subscriptable
-> > ~~~
-> > {: .error}
-> {: .solution}
-{: .challenge}
-
-> ## Slicing
->
-> What does the following program print?
->
-> ~~~
-> atom_name = 'carbon'
-> print('atom_name[1:3] is:', atom_name[1:3])
-> ~~~
-> {: .python}
-> > ## Solution
-> > 
-> > ~~~
-> > atom_name[1:3] is: ar
-> > ~~~
-> > {: .output}
-> {: .solution}
->
-> 1.  What does `thing[low:high]` do?
-> 2.  What does `thing[low:]` (without a value after the colon) do?
-> 3.  What does `thing[:high]` (without a value before the colon) do?
-> 4.  What does `thing[:]` (just a colon) do?
-> 5.  What does `thing[number:negative-number]` do?
-> 6.  What happens when you choose a `high` value which is out of range? (i.e., try `atom_name[0:15]`) 
-{: .challenge}
-
-
 > ## Fractions
 >
 > What type of value is 3.4?
