@@ -383,38 +383,6 @@ result of call is: None
 > 3. Encapsulate the logic of your `for` loop into a function called `iterate` that takes the initial condition as its first input, the parameter `t_final` as its second input and the parameter `r` as its third input. The function should return the list of values representing the state of the logistic map at time _t=0,1,...,t_final_.
 >
 >
-> > ## Solution
-> >
-> > 1.
-> >
-> > ~~~
-> > def logistic_map(x, r):
-> >     return r * x * (1 - x)
-> > ~~~
-> > {: .python}
-> >
-> > 2.
-> >
-> > ~~~
-> > initial_condition = 0.5
-> > t_final = 10
-> > r = 1.0
-> > trajectory = [initial_condition]
-> > for t in range(1, t_final):
-> >     trajectory[t] = logistic_map(trajectory[t-1], r)
-> > ~~~
-> > {: .python}
-> >
-> > 3.
-> > ~~~
-> > def iterate(initial_condition, t_final, r):
-> >     trajectory = [initial_condition]
-> >     for t in range(1, t_final):
-> >         trajectory[t] = logistic_map(trajectory[t-1], r)
-> >     return trajectorys
-> > ~~~
-> > {: .python}
-> {: .solution}
 {: .challenge}
 
 > ## Error propagation
