@@ -288,28 +288,35 @@ print(numpy.mean(data[:,1:], axis=0))
 ~~~
 {: .output}
 
-> ## Calculating the band gap of photovoltaic materials
-> 
-> In the tutorial we calculate the band gap of ITO. 
-> Following the same procedure, calculate the band gap of one of the following photovoltaic materials: CdS, Si or GaAs. 
-> To verify your code compare your band gap value to those found in the literature
-{: .challenge}
-
 > ## Error bars and exponential growth
 > 
 > This question is partly modelled on the a [blog post](https://towardsdatascience.com/modeling-exponential-growth-49a2b6f22e1f). There is also a nice
 > [3Blue1Brown video on exponential growth in the context of Covid](https://www.youtube.com/watch?v=Kas0tIxDvrg).
 > 
-> We have the following (hypothetical) data for the growth in Covid cases at a university over a two-week period
-> ~~~
-> import numpy as np
-> day = np.arange(0,15)
-> case_numbers = np.array([3,4,8,15,32,65,128,253,512,1025,2049,4090,8191,16387])
-> ~~~
-> {: .language-python}
+> We have the following (hypothetical) data for the number of Covid cases at a university over a two-week period: 
+> `3, 4, 8, 15, 32, 65, 128, 253, 512, 1025, 2049, 4090, 8191, 16387`. Each data point corresponds to the positive test results received on a single day.
+>
+> Create a one-dimenstional Numpy array to hold this data. Scatter plot the data and save as a `.png` file. Save the raw data to a `.csv` (comma separated variable) or `.txt` file.
+> 
+> > ## Solution
+> > ~~~
+> > import numpy as np
+> > import matplotlib.pyplot as plt
+> > 
+> > case_numbers = np.array([3,4,8,15,32,65,128,253,512,1025,2049,4090,8191,16387])
+> > plt.scatter(np.arange(0,15),case_numbers)
+> > plt.xlabel("Day number")
+> > plt.ylabel("Covid case count")
+> > 
+> > plt.savefig("Covid_case_numbers_plot.png")
+> > np.savetxt("Covid_case_numbers_data.csv", case_numbers, delimiter=",")
+> > ~~~
+> > {: .language-python}
+> {: .solution}
 > 
 > An administrator realises that some test results may have been filed a day late or a day early. This makes the error bar on the case numbers +/- 200.
-> Using the `matplotlib.pyplot.errorbar` function with the `yerr` keyword argument plot the case number data with error bars. Label your axes and title the plot.
+> Using the `matplotlib.pyplot.errorbar` function with the `yerr` keyword argument plot the case number data with error bars. 
+> Label your axes and title  the plot.
 > 
 > > ## Solution
 > > ~~~
@@ -341,6 +348,13 @@ print(numpy.mean(data[:,1:], axis=0))
 > > ## Solution
 > > The data roughly doubles each day. The calculated growth factor is 1.94, which is reassuringly close to 2. 
 > {: .solution}
+{: .challenge}
+
+> ## Calculating the band gap of photovoltaic materials
+> 
+> In the tutorial we calculate the band gap of ITO. 
+> Following the same procedure, calculate the band gap of one of the following photovoltaic materials: CdS, Si or GaAs. 
+> To verify your code compare your band gap value to those found in the literature
 {: .challenge}
 
 > ## Encapsulation
