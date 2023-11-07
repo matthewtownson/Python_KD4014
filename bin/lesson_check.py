@@ -226,8 +226,7 @@ def read_all_markdown(source_dir, parser):
     result = {}
     for pat in all_patterns:
         for filename in glob.glob(pat):
-            data = read_markdown(parser, filename)
-            if data:
+            if data := read_markdown(parser, filename):
                 result[filename] = data
     return result
 
@@ -273,10 +272,14 @@ def check_fileset(source_dir, reporter, filenames_present):
 def create_checker(args, filename, info):
     """Create appropriate checker for file."""
 
-    for (pat, cls) in CHECKERS:
-        if pat.search(filename):
-            return cls(args, filename, **info)
-    return NotImplemented
+    return next(
+        (
+            cls(args, filename, **info)
+            for pat, cls in CHECKERS
+            if pat.search(filename)
+        ),
+        NotImplemented,
+    )
 
 class CheckBase:
     """Base class for checking Markdown files."""

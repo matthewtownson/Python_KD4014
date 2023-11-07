@@ -42,10 +42,7 @@ def main():
 
     # Create.
     for path in BOILERPLATE:
-        shutil.copyfile(
-            "bin/boilerplate/{}".format(path),
-            path
-        )
+        shutil.copyfile(f"bin/boilerplate/{path}", path)
 
 
 if __name__ == '__main__':
